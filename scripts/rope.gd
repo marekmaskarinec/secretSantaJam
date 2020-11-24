@@ -2,12 +2,20 @@ extends Node2D
 
 
 var connections = []
-var max_connections = 3
+var max_connections = 1
 var lenght = 600
+
+func clear():
+	for i in range(len(connections)):
+		connections[i].connected = false
+		connections[i].pull = false
+		connections[i].stretch = false
+		
+	connections = []
 
 func pull():
 	var tween = get_node("tween")
-	if len(connections) > 1:
+	if len(connections) > 0:
 		for i in range(len(connections)):
 			if not connections[i].pull:
 				connections[i].pull = true
@@ -15,16 +23,18 @@ func pull():
 				connections[i].pull = false
 				connections[i].get_node("collider").disabled = true
 			connections[i].stretch = false
+			#connections[i].hold = false
 			#tween.interpolate_property(connections[i], "global_position",
 			#		connections[i].global_position, self.global_position, 0.2,
 			#		Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
 			#tween.start()
-
+	#elif len(connections) > 0 and len(connections) < 2:
+	#	connections[0].hold = true
 func stretch():
 	var tween = get_node("tween")
 	var incr
 	var used_random = false
-	if len(connections) > 1:
+	if len(connections) > 0:
 		for i in range(len(connections)):
 			if not connections[i].stretch:
 				connections[i].stretch = true
@@ -33,15 +43,19 @@ func stretch():
 				connections[i].get_node("collider").disabled = true
 				
 			connections[i].pull = false
-
+	#elif len(connections) > 0 and connections[0].hold:
+		#connections[0].move_and_slide(connections[0].global_position.direction_to(get_global_mouse_position()))
+		#connections[0].hold = false
+		#connections[0].throw = true
+		#clear()
 
 func add_connection(node):
-	if len(connections) < max_connections:
-		connections.append(node)
-	else:
+	if len(connections) >= max_connections:
+
 		connections[0].connected = false
 		connections.remove(0)
 		
+	if not node in connections:
 		connections.append(node)
 
 func _process(delta):

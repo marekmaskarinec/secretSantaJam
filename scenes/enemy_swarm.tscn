@@ -13,13 +13,13 @@ bg_color = Color( 0.4, 1, 0.890196, 0.678431 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 9.00444, 7.72128 )
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=4]
 radius = 214.015
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=5]
 radius = 92.2129
 
-[node name="enemyBase" type="KinematicBody2D" groups=[
+[node name="swarm" type="KinematicBody2D" groups=[
 "attackable",
 ]]
 position = Vector2( 167.075, 274.926 )
@@ -79,12 +79,12 @@ hue_variation_random = 1.0
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="clickArea" type="Area2D" parent="."]
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="clickArea"]
 position = Vector2( 0.0222626, 2.14926 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 [connection signal="body_entered" from="clickArea" to="." method="_on_clickArea_body_entered"]
