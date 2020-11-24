@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/bullet.gd" type="Script" id=1]
+[ext_resource path="res://scripts/enemy_clicker.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3, 3 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 13.4484
+
+[node name="bullet" type="KinematicBody2D"]
+position = Vector2( -39.9515, 20.5061 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="icon" type="Sprite" parent="."]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 3 )
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="click_area" type="Area2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="click_area"]
+shape = SubResource( 2 )
