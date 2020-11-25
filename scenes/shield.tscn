@@ -9,7 +9,9 @@ extents = Vector2( 1.48439, 32.1357 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 31.5, 1.625 )
 
-[node name="shield" type="StaticBody2D"]
+[node name="shield" type="StaticBody2D" groups=[
+"shield",
+]]
 collision_layer = 2
 script = ExtResource( 2 )
 

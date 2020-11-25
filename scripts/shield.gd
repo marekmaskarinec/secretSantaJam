@@ -1,9 +1,8 @@
 extends StaticBody2D
 
-const MAX_ENERGY = 10
+const MAX_ENERGY = 100
 
-var energy = 10
+var energy = 100
 
 func _process(delta):
-	print(energy)
-	get_node("icon").set_modulate(Color(0, 0, 0, 1/MAX_ENERGY*energy))
+	get_node("icon").modulate.a = 0.01 * energy

@@ -10,3 +10,4 @@ func _input_event(viewport, event, shape_idx):
 		elif get_parent().path != null:
 			get_tree().get_nodes_in_group("rope")[0].add_connection(get_parent())
 			get_parent().connected = true
+

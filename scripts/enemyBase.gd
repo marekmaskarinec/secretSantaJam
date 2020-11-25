@@ -15,6 +15,17 @@ var hp = 4
 var lastPos
 var offset#= Vector2(randi()%3, randi()%3)
 var dm
+var oa
+var can_attack = true
+
+
+func swarm_attack():
+	var player = get_tree().get_nodes_in_group("player")[0]
+	self.move_and_slide(global_position.direction_to(player.global_position)*5)
+	can_attack = false
+	player.take_dmg(dm)
+	#self.take_damage(dm)
+	stretch = true
 
 func _ready():
 	if "spawner" in name:
@@ -27,6 +38,7 @@ func _ready():
 		dm = 1
 		offset = Vector2(randf()+1, randf()+1)
 		speed = 300
+		$CPUParticles2D.emitting = true
 	get_node("Control/ProgressBar").max_value = hp
 	#randomize()
 	
@@ -49,6 +61,7 @@ func take_damage(num):
 		get_tree().get_nodes_in_group("rope")[0].clear()
 		#get_node("collider").disabled = true
 	if num < hp:
+		$AnimationPlayer.play("scenestakeDmg")
 		hp -= num
 		get_node("Control/ProgressBar").value = hp
 		
@@ -116,19 +129,36 @@ func _process(delta):
 	lastPos = position
 
 	if "spawner" in name:
-		if get_parent().get_node("swarms").get_child_count() < 3:
+		if get_parent().get_node("swarms").get_child_count() < int(hp/4):
 			inst = load("res://scenes/enemy_swarm.tscn").instance()
-			inst.global_position = global_position + Vector2(randi()%2+randf(), randi()%2+randf())
+			inst.global_position = global_position + Vector2(randf(), randf())/2
 			get_parent().get_node("swarms").add_child(inst)
 
-func _on_clickArea_body_entered(body):
+	if "swarm" in name:
+		oa = $collisionArea.get_overlapping_areas()
+		for i in range(len($collisionArea.get_overlapping_areas())):
+			if "hitbox" in oa[i].name and can_attack:
+				swarm_attack()
+				#print("attack")
+			else:
+				can_attack = true
+
+func _on_collisionArea_body_entered(body):
+	if "enemy" in body.name:
+		print("enemy")
+		take_damage(dm)
+		body.take_damage(dm)
 	if "block" in body.name:
+		print("block")
 		if body.pull:
-			take_damage(1)
+			take_damage(dm*2)
 		if body.stretch:
-			take_damage(1)
+			take_damage(dm*2)
 	if "shield" in body.name:
-		if body.energy >= dm:
+		if true:#body.energy >= dm:
 			body.energy -= dm
+			print("shield")
+			move_and_slide(-global_position.direction_to(body.global_position))
 			take_damage(dm)
-			stretch = true
+
+
