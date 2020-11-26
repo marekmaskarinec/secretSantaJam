@@ -16,18 +16,18 @@ bg_color = Color( 0.4, 1, 0.890196, 0.678431 )
 extents = Vector2( 9.00444, 7.72128 )
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 959.902
+radius = 556.179
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=5]
 radius = 12.6531
 
-[sub_resource type="Curve" id=7]
+[sub_resource type="Curve" id=6]
 min_value = -200.0
 max_value = 200.0
 _data = [ Vector2( 0, 200 ), 0.0, 0.0, 0, 0, Vector2( 1, -200 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CircleShape2D" id=5]
-radius = 92.2129
+[sub_resource type="CircleShape2D" id=7]
+radius = 77.2798
 
 [node name="enemy_swarm" type="KinematicBody2D" groups=[
 "attackable",
@@ -76,7 +76,7 @@ shape = SubResource( 4 )
 [node name="collisionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collisionArea"]
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 1.6
@@ -99,7 +99,7 @@ angular_velocity = 19.46
 angular_velocity_random = 1.0
 linear_accel = 16.22
 linear_accel_random = 1.0
-linear_accel_curve = SubResource( 7 )
+linear_accel_curve = SubResource( 6 )
 color = Color( 1, 0.419608, 0.592157, 0.556863 )
 anim_speed = 32.52
 
@@ -112,5 +112,18 @@ script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="clickArea"]
 position = Vector2( 0.0222626, 2.14926 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = -30.0
+margin_top = -30.0
+margin_right = 30.0
+margin_bottom = 30.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="body_entered" from="collisionArea" to="." method="_on_collisionArea_body_entered"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

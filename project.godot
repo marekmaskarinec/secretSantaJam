@@ -19,9 +19,9 @@ config/name="connecter"
 run/main_scene="res://scenes/TestScene.tscn"
 config/icon="res://icon.png"
 
-[debug]
+[editor_plugins]
 
-settings/stdout/print_fps=true
+enabled=PoolStringArray( "Todo_Manager" )
 
 [input]
 

@@ -98,7 +98,9 @@ func _process(delta):
 	
 	var distance_to_walk = speed * delta
 	
+	
 	if path.size() > 0:
+
 		position -= offset
 
 	
@@ -153,7 +155,7 @@ func _process(delta):
 	if "spawner" in name:
 		if get_parent().get_node("swarms").get_child_count() < int(hp/4):
 			inst = load("res://scenes/enemy_swarm.tscn").instance()
-			inst.global_position = global_position + Vector2(randf(), randf())/2
+			inst.position = position + Vector2(randf(), randf())/2
 			get_parent().get_node("swarms").add_child(inst)
 
 	if "swarm" in name:
@@ -200,3 +202,9 @@ func _on_collisionArea_body_entered(body):
 			take_damage(dm)
 
 
+
+
+func _on_Button_pressed():
+	self.connected = true
+	get_tree().get_nodes_in_group("rope")[0].add_connection(self)
+	$outline.visible = true
