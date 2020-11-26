@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.272727 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.107143, 0.660714 )
+colors = PoolColorArray( 0.654902, 1, 0.929412, 1, 0.603922, 1, 0.92549, 1, 0.4, 1, 0.890196, 1 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 40.7912
+
+[node name="portal" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 400
+lifetime = 2.0
+speed_scale = 0.05
+emission_shape = 1
+emission_sphere_radius = 4.0
+gravity = Vector2( -40, 0 )
+initial_velocity = 60.0
+orbit_velocity = 1.0
+orbit_velocity_random = 0.1
+scale_amount = 2.0
+scale_amount_curve = SubResource( 1 )
+color_ramp = SubResource( 2 )
+
+[node name="portal_aarea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal_aarea"]
+shape = SubResource( 3 )

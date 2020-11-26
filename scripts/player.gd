@@ -6,6 +6,7 @@ var motion = Vector2()
 var hitDict
 var direction = 1
 var hp = 60
+var oa
 
 func take_damage(dm):
 	if hp - dm > 0:# and OS.get_datetime()["second"] - lastHit > 1:
@@ -60,6 +61,13 @@ func _process(delta):
 		get_node("rope").pull()
 	if Input.is_action_just_pressed("stretch"):
 		get_node("rope").stretch()
+		
+	# OBJECT INTERACTION
+	oa = $hitbox.get_overlapping_areas()
+	for i in range(len(oa)):
+		if "portal" in oa[i].name:
+			if Input.is_action_just_pressed("ui_focus_next"):
+				get_tree().change_scene("res://scenes/pub.tscn")
 
 func hit(n):
 	hitDict[n]

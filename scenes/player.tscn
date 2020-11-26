@@ -163,7 +163,6 @@ scale_amount = 3.0
 color_ramp = SubResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 5.96704 )
 shape = SubResource( 8 )
 
@@ -171,7 +170,6 @@ shape = SubResource( 8 )
 anims/main = SubResource( 9 )
 
 [node name="hitbox" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource( 10 )
