@@ -2,16 +2,16 @@
 
 [resource]
 resource_name = "takeDmg"
-length = 0.4
+length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("enemy_shooter/icon:modulate")
+tracks/0/path = NodePath("icon:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 13.9288 ),
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0.937255, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.894118, 0.0196078, 0.0196078, 1 ), Color( 1, 1, 1, 1 ) ]
 }

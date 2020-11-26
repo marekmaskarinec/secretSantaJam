@@ -103,5 +103,18 @@ position = Vector2( 0.213058, 3.20975 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawner/collisionArea"]
 shape = SubResource( 5 )
 
+[node name="Button" type="Button" parent="spawner"]
+margin_left = -50.0
+margin_top = -50.0
+margin_right = 50.0
+margin_bottom = 50.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="swarms" type="Node2D" parent="."]
 [connection signal="body_entered" from="spawner/collisionArea" to="spawner" method="_on_collisionArea_body_entered"]
+[connection signal="pressed" from="spawner/Button" to="spawner" method="_on_Button_pressed"]
