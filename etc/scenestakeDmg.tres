@@ -4,7 +4,7 @@
 resource_name = "takeDmg"
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("icon:modulate")
+tracks/0/path = NodePath("enemy_shooter/icon:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false

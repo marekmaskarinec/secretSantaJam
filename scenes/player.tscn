@@ -1,72 +1,72 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/character.png" type="Texture" id=2]
 [ext_resource path="res://scenes/rope.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=4]
 
-[sub_resource type="AtlasTexture" id=13]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 96, 96 )
-
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 288, 0, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 192, 0, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 96, 0, 96, 96 )
 
-[sub_resource type="SpriteFrames" id=18]
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 96, 96 )
+
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 13 ) ],
-"loop": true,
-"name": "down",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 14 ) ],
+"frames": [ SubResource( 1 ) ],
 "loop": true,
 "name": "left",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 15 ) ],
+"frames": [ SubResource( 2 ) ],
 "loop": true,
 "name": "right",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 16 ) ],
+"frames": [ SubResource( 3 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 17 ) ],
+"frames": [ SubResource( 4 ) ],
 "loop": true,
 "name": "up",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
 } ]
 
-[sub_resource type="Gradient" id=19]
+[sub_resource type="Gradient" id=7]
 offsets = PoolRealArray( 0, 0.314176, 0.643678 )
 colors = PoolColorArray( 0.4, 1, 0.890196, 1, 0.603922, 1, 0.92549, 0.729412, 0.529412, 1, 0.913725, 0.498039 )
 
-[sub_resource type="CapsuleShape2D" id=12]
+[sub_resource type="CapsuleShape2D" id=8]
 radius = 30.0
 height = 25.0
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=9]
 resource_name = "main"
 length = 0.7
 loop = true
@@ -95,8 +95,24 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 6 ), Vector2( 0, 4.4 ), Vector2( 0, 6 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=21]
+[sub_resource type="CircleShape2D" id=10]
 radius = 57.5543
+
+[sub_resource type="Animation" id=11]
+resource_name = "damage"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.745098, 0.188235, 0.188235, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="player" type="KinematicBody2D" groups=[
 "player",
@@ -122,8 +138,8 @@ margin_bottom = -103.376
 ] instance=ExtResource( 3 )]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -0.023308 )
-frames = SubResource( 18 )
+position = Vector2( 0, -0.032958 )
+frames = SubResource( 6 )
 animation = "down"
 playing = true
 
@@ -131,7 +147,6 @@ playing = true
 show_behind_parent = true
 position = Vector2( 0.526161, 38.9354 )
 rotation = -3.14159
-scale = Vector2( 1, 1 )
 amount = 100
 emission_shape = 2
 emission_rect_extents = Vector2( 12, 1 )
@@ -145,16 +160,21 @@ angular_velocity_random = 1.0
 angle = 45.0
 angle_random = 1.0
 scale_amount = 3.0
-color_ramp = SubResource( 19 )
+color_ramp = SubResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 5.97669 )
-shape = SubResource( 12 )
+visible = false
+position = Vector2( 0, 5.96704 )
+shape = SubResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/main = SubResource( 20 )
+anims/main = SubResource( 9 )
 
 [node name="hitbox" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-shape = SubResource( 21 )
+shape = SubResource( 10 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/damage = SubResource( 11 )

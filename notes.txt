@@ -1,0 +1,3 @@
+# world generation
+	## enemies
+		- max: 1 tank, 1 spawner

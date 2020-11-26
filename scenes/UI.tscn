@@ -1,11 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://etc/stylebox.tres" type="StyleBox" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=1]
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 1, 0.419608, 0.592157, 1 )
 
 [node name="UI" type="Control"]
 light_mask = 262144
@@ -27,22 +24,9 @@ margin_bottom = 26.0
 rect_rotation = 6.0
 custom_styles/fg = ExtResource( 1 )
 custom_styles/bg = SubResource( 1 )
-max_value = 20.0
+max_value = 60.0
 step = 0.1
-value = 20.0
-percent_visible = false
-
-[node name="slow_mo_progress" type="ProgressBar" parent="VBoxContainer"]
-margin_left = 6.0
-margin_top = 32.0
-margin_right = 106.0
-margin_bottom = 52.0
-rect_rotation = 6.0
-custom_styles/fg = SubResource( 2 )
-custom_styles/bg = SubResource( 1 )
-max_value = 100.0
-step = 0.1
-value = 100.0
+value = 60.0
 percent_visible = false
 
 [node name="UiTween" type="Tween" parent="."]

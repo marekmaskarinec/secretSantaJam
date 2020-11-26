@@ -5,12 +5,15 @@ const SPEED = 340
 var motion = Vector2()
 var hitDict
 var direction = 1
-var hp = 20
+var hp = 60
 
-func take_dmg(dm):
+func take_damage(dm):
 	if hp - dm > 0:# and OS.get_datetime()["second"] - lastHit > 1:
 		hp -= dm
-		$Camera2D/UI/VBoxContainer/HPBar.value = hp
+		$Camera2D/UI/UiTween.interpolate_property($Camera2D/UI/VBoxContainer/HPBar, "value", $Camera2D/UI/VBoxContainer/HPBar.value, hp, 0.2, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		$Camera2D/UI/UiTween.start()
+		$AnimationPlayer2.play("damage")
+		#$Camera2D/UI/VBoxContainer/HPBar.value = hp
 		print(hp)
 	else:
 		print("died")

@@ -17,13 +17,15 @@ var offset#= Vector2(randi()%3, randi()%3)
 var dm
 var oa
 var can_attack = true
-
+var dead = false
+var lastShot
+var playerPos
 
 func swarm_attack():
 	var player = get_tree().get_nodes_in_group("player")[0]
 	self.move_and_slide(global_position.direction_to(player.global_position)*5)
 	can_attack = false
-	player.take_dmg(dm)
+	player.take_damage(dm)
 	#self.take_damage(dm)
 	stretch = true
 
@@ -33,12 +35,23 @@ func _ready():
 		dm = 1
 		offset = Vector2(0, 0)
 		speed = 60
+	if "tank" in name:
+		hp = 30
+		dm = 0
+		offset = Vector2(0, 0)
+		speed = 160
 	elif "swarm" in name:
 		hp = 1
 		dm = 1
-		offset = Vector2(randf()+1, randf()+1)
+		offset = Vector2(randf()+0.5, randf()+0.5)
 		speed = 300
 		$CPUParticles2D.emitting = true
+	elif "shooter" in name:
+		hp = 4
+		dm = 1
+		offset = Vector2(0, 0)
+		speed = 4
+		lastShot = OS.get_datetime()["second"]
 	get_node("Control/ProgressBar").max_value = hp
 	#randomize()
 	
@@ -48,8 +61,12 @@ func die():
 	print("death")
 	if self in get_tree().get_nodes_in_group("rope")[0].connections:
 		get_tree().get_nodes_in_group("rope")[0].connections.remove(get_tree().get_nodes_in_group("rope")[0].connections.find_last(self))
-	self.queue_free()
-
+	#self.queue_free()
+	$icon.visible = false
+	$explosion.emitting = true
+	$Control.visible = false
+	dead = true
+	
 func take_damage(num):
 	if self in get_tree().get_nodes_in_group("rope")[0].connections:
 		print("disconnected")
@@ -69,6 +86,11 @@ func take_damage(num):
 		die()
 
 func _process(delta):
+	#print(get_property_list())
+	
+	if dead and not $explosion.emitting:
+		queue_free()
+	
 	var ob = get_node("Area2D").get_overlapping_bodies()
 	for i in range(len(ob)):
 		if ob[i].name == "player":
@@ -102,7 +124,7 @@ func _process(delta):
 				move_and_slide(global_position.direction_to(collision.collider.global_position))
 
 		else:
-			#get_node("collider").disabled = true
+			get_node("collider").disabled = true
 			move_and_slide(Vector2(0, 0))
 			pull = false
 	if stretch:
@@ -113,7 +135,7 @@ func _process(delta):
 				take_damage(1)
 				move_and_slide(global_position.direction_to(collision.collider.global_position))
 		else:
-			#get_node("collider").disabled = true
+			get_node("collider").disabled = true
 			move_and_slide(Vector2(0, 0))
 			stretch = false
 			
@@ -142,6 +164,18 @@ func _process(delta):
 				#print("attack")
 			else:
 				can_attack = true
+				
+	if "shooter" in name and path != null:
+		if get_parent().get_node("bullets").get_child_count() < 1:
+			if OS.get_datetime()["second"] - lastShot >= 2 or  OS.get_datetime()["second"] - lastShot:
+				lastShot = OS.get_datetime()["second"]
+				inst = load("res://scenes/bullet.tscn").instance()
+				playerPos = global_position.direction_to(get_tree().get_nodes_in_group("player")[0].global_position)
+				if playerPos.x < playerPos.y:
+					inst.position = position#+Vector2(playerPos.x/playerPos.y, 1)
+				else:
+					inst.position = position#+Vector2(1, playerPos.y/playerPos.y)
+				get_parent().get_node("bullets").add_child(inst)
 
 func _on_collisionArea_body_entered(body):
 	if "enemy" in body.name:
@@ -152,8 +186,12 @@ func _on_collisionArea_body_entered(body):
 		print("block")
 		if body.pull:
 			take_damage(dm*2)
+			body.stretch = false
+			body.pull = true
 		if body.stretch:
 			take_damage(dm*2)
+			body.stretch = true
+			body.pull = false
 	if "shield" in body.name:
 		if true:#body.energy >= dm:
 			body.energy -= dm

@@ -17,12 +17,13 @@ func pull():
 	var tween = get_node("tween")
 	if len(connections) > 0:
 		for i in range(len(connections)):
-			if not connections[i].pull:
-				connections[i].pull = true
-			else:
-				connections[i].pull = false
-				connections[i].get_node("collider").disabled = true
-			connections[i].stretch = false
+			if connections[i] != null:
+				if not connections[i].pull:
+					connections[i].pull = true
+				else:
+					connections[i].pull = false
+					connections[i].get_node("collider").disabled = true
+				connections[i].stretch = false
 			#connections[i].hold = false
 			#tween.interpolate_property(connections[i], "global_position",
 			#		connections[i].global_position, self.global_position, 0.2,
@@ -36,13 +37,14 @@ func stretch():
 	var used_random = false
 	if len(connections) > 0:
 		for i in range(len(connections)):
-			if not connections[i].stretch:
-				connections[i].stretch = true
-			else:
-				connections[i].stretch = false
-				connections[i].get_node("collider").disabled = true
-				
-			connections[i].pull = false
+			if connections[i] != null:
+				if not connections[i].stretch:
+					connections[i].stretch = true
+				else:
+					connections[i].stretch = false
+					connections[i].get_node("collider").disabled = true
+					
+				connections[i].pull = false
 	#elif len(connections) > 0 and connections[0].hold:
 		#connections[0].move_and_slide(connections[0].global_position.direction_to(get_global_mouse_position()))
 		#connections[0].hold = false
@@ -52,7 +54,8 @@ func stretch():
 func add_connection(node):
 	if len(connections) >= max_connections:
 
-		connections[0].connected = false
+		if connections[0] != null:
+			connections[0].connected = false
 		connections.remove(0)
 		
 	if not node in connections:
@@ -69,7 +72,7 @@ func _process(delta):
 		else:
 			self.global_position.y = connections[1].global_position.y - (connections[1].global_position.y - connections[0].global_position.y)/2
 	else:
-		self.position = Vector2(-32, 25)
+		self.position = Vector2(0,0)
 
 	if Input.is_action_just_pressed("cancel"):
 		for i in range(len(connections)):
