@@ -9,8 +9,8 @@ func _ready():
 	
 func handle_col(col):
 	if col != null:
-		if "enemy" in col.name or "player" in col.name and col != get_node("../../enemy_shooter"):
-			print("hit")
+		if "enemy" in col.name or "player" in col.name and not "shooter" in col.name:
+			#print("hit")
 			col.take_damage(2)
 		self.queue_free()
 	

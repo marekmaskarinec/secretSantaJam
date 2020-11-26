@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="connecter"
 run/main_scene="res://scenes/TestScene.tscn"
+boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://icon.png"
 
 [editor_plugins]
@@ -73,3 +74,7 @@ vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_clear_color=Color( 0.0313726, 0.0313726, 0.0313726, 1 )
 environment/default_environment="res://default_env.tres"
+
+[world]
+
+2d/cell_size=96

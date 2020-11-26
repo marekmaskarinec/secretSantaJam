@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://etc/stylebox.tres" type="StyleBox" id=1]
+[ext_resource path="res://sprites/stone.png" type="Texture" id=2]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -15,6 +16,9 @@ __meta__ = {
 [node name="VBoxContainer" type="Container" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HPBar" type="ProgressBar" parent="VBoxContainer"]
 margin_left = 6.0
@@ -28,5 +32,25 @@ max_value = 60.0
 step = 0.1
 value = 60.0
 percent_visible = false
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+margin_left = 6.0
+margin_top = 18.0
+margin_right = 54.0
+margin_bottom = 66.0
+rect_rotation = 6.0
+rect_scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 2 )
+stretch_mode = 4
+
+[node name="stoneLabel" type="Label" parent="VBoxContainer"]
+margin_left = 46.0
+margin_top = 36.0
+margin_right = 86.0
+margin_bottom = 61.0
+rect_rotation = 6.0
+text = "100"
+align = 1
+valign = 1
 
 [node name="UiTween" type="Tween" parent="."]

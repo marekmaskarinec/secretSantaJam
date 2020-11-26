@@ -14,18 +14,13 @@ var enemy_map
 var random
 var num_map
 var num_map_2
-
-func get_num_map():
-	return {
-		0: spawners < max_spawners,
-		1: swarms < max_swarms,
-		2: tanks < max_tanks,
-		3: shooters < max_shooters,
-	}
+var max_map
+var num_of_nodes
 
 func _ready():
 	randomize()
 	spawn_nodes = get_children()
+	num_of_nodes = len(spawn_nodes)-1
 	max_spawners = int(len(spawn_nodes)*0.2)
 	max_tanks = int(1)
 	max_shooters = int(len(spawn_nodes)*0.6)
@@ -38,38 +33,45 @@ func _ready():
 		3: load("res://scenes/enemy_shooter.tscn"),
 	}
 	
-	num_map_2 = {
+	num_map = {
 		0: spawners,
 		1: swarms,
 		2: tanks,
 		3: shooters
 	}
 
+	max_map = {
+		0: max_spawners,
+		1: max_swarms,
+		2: max_tanks,
+		3: max_shooters,
+	}
+
 	print(max_shooters)
 	print(max_spawners)
 	print(max_swarms)
 
-	for i in range(len(spawn_nodes)):
+	for i in range(len(spawn_nodes)-1):
 		random = randi()%4
-		if get_num_map()[random]:
+		if num_map[random] < max_map[random]:
 			inst = enemy_map[random].instance()
 			inst.position = spawn_nodes[i].position
 			add_child(inst)
 			spawn_nodes[i].queue_free()
-			num_map_2[random] += 1
+			num_map[random] += 1
 		else:
 			if i > 0:
 				i -= 1
 			else:
 				i = 0
 
-	for i in range(get_child_count()):
-		print(get_children()[i].position)
-
 func _process(delta):
-	if get_child_count() <= 1:
+	
+	#if true:#get_child_count() <= 3:
+		
+	if get_child_count() < num_of_nodes:
 		print("opening door")
 		$door/Tween.interpolate_property($door, "rotation_degrees", $door.rotation_degrees, $door.rotation_degrees+90, 1, Tween.TRANS_BOUNCE, Tween.EASE_IN)
 		$door/Tween.start()
-		
+		num_of_nodes = -1
 	

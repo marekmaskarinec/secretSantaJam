@@ -15,7 +15,7 @@ func handle_col(c):
 		c.collider.move_and_slide(Vector2(10, 10))
 		move_and_slide(-global_position.direction_to(collision.collider.global_position)*randf())
 		get_tree().get_nodes_in_group("rope")[0].clear()
-		print("cube")
+		#print("cube")
 		return true
 		
 func _process(delta):

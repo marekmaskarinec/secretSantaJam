@@ -7,6 +7,7 @@ var hitDict
 var direction = 1
 var hp = 60
 var oa
+var stones = 0
 
 func take_damage(dm):
 	if hp - dm > 0:# and OS.get_datetime()["second"] - lastHit > 1:
@@ -15,7 +16,7 @@ func take_damage(dm):
 		$Camera2D/UI/UiTween.start()
 		$AnimationPlayer2.play("damage")
 		#$Camera2D/UI/VBoxContainer/HPBar.value = hp
-		print(hp)
+		#print(hp)
 	else:
 		print("died")
 
@@ -67,7 +68,15 @@ func _process(delta):
 	for i in range(len(oa)):
 		if "portal" in oa[i].name:
 			if Input.is_action_just_pressed("ui_focus_next"):
-				get_tree().change_scene("res://scenes/pub.tscn")
+				$Tween.interpolate_property($Panel, "modulate", Color(0,0,0,0), Color(0,0,0,1), 0.8, Tween.TRANS_LINEAR, Tween.EASE_IN)
+				$Tween.start()
+				#get_tree().change_scene("res://scenes/pub.tscn")
 
+	if $Panel.get_modulate() == Color(0,0,0,1):
+		OS.delay_msec(400)
+		get_tree().change_scene("res://scenes/pub.tscn")
+		
+	$Camera2D/UI/VBoxContainer/stoneLabel.text = str(stones)
+	
 func hit(n):
 	hitDict[n]

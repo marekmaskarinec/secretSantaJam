@@ -9,10 +9,6 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 96, 96, 32, 96, 32, 0, 64, 0, 64, 32, 96, 32 )
 
-[sub_resource type="NavigationPolygon" id=3]
-vertices = PoolVector2Array( 96, 96, 0, 96, 0, 0, 96, 0 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
-
 [sub_resource type="NavigationPolygon" id=4]
 vertices = PoolVector2Array( 17.4251, 95.3893, 17.827, 41.5378, 76.0992, 41.1359, 77.3049, 96, 96, 96, 96, 0, 0, 0, 0, 96 )
 polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6, 7 ) ]
@@ -93,6 +89,10 @@ points = PoolVector2Array( 96, 96, 32, 96, 32, 32, 96, 64 )
 vertices = PoolVector2Array( 96, 96, 0, 96, 0, 0, 96, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
+[sub_resource type="NavigationPolygon" id=30]
+vertices = PoolVector2Array( 96, 96, 0, 96, 0, 0, 96, 0 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
 [sub_resource type="NavigationPolygon" id=27]
 vertices = PoolVector2Array( 79.3142, 96, 77.3048, 16.122, 0, 17.4616, 0, 0, 96, 0, 96, 96 )
 polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ) ]
@@ -128,21 +128,6 @@ polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ) ]
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
-1/name = "tileset.png 1"
-1/texture = ExtResource( 1 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 0, 0, 96, 96 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/navigation = SubResource( 3 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape_one_way = false
-1/shape_one_way_margin = 0.0
-1/shapes = [  ]
-1/z_index = 0
 2/name = "tileset.png 2"
 2/texture = ExtResource( 1 )
 2/tex_offset = Vector2( 0, 0 )
@@ -549,3 +534,18 @@ polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ) ]
 23/shape_one_way_margin = 0.0
 23/shapes = [  ]
 23/z_index = 0
+24/name = "tileset.png 24"
+24/texture = ExtResource( 1 )
+24/tex_offset = Vector2( 0, 0 )
+24/modulate = Color( 1, 1, 1, 1 )
+24/region = Rect2( 0, 0, 96, 96 )
+24/tile_mode = 0
+24/occluder_offset = Vector2( 0, 0 )
+24/navigation_offset = Vector2( 0, 0 )
+24/navigation = SubResource( 30 )
+24/shape_offset = Vector2( 0, 0 )
+24/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+24/shape_one_way = false
+24/shape_one_way_margin = 0.0
+24/shapes = [  ]
+24/z_index = 0

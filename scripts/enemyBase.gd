@@ -20,6 +20,7 @@ var can_attack = true
 var dead = false
 var lastShot
 var playerPos
+var toGive
 
 func swarm_attack():
 	var player = get_tree().get_nodes_in_group("player")[0]
@@ -35,41 +36,45 @@ func _ready():
 		dm = 1
 		offset = Vector2(0, 0)
 		speed = 60
+		toGive = 2
 	if "tank" in name:
 		hp = 30
 		dm = 0
 		offset = Vector2(0, 0)
 		speed = 160
+		toGive = 1
 	elif "swarm" in name:
 		hp = 1
 		dm = 1
 		offset = Vector2(randf()+0.5, randf()+0.5)
 		speed = 300
 		$CPUParticles2D.emitting = true
+		toGive = 0
 	elif "shooter" in name:
 		hp = 4
 		dm = 1
 		offset = Vector2(0, 0)
 		speed = 4
 		lastShot = OS.get_datetime()["second"]
+		toGive = 0
 	get_node("Control/ProgressBar").max_value = hp
 	#randomize()
 	
 
 
 func die():
-	print("death")
 	if self in get_tree().get_nodes_in_group("rope")[0].connections:
 		get_tree().get_nodes_in_group("rope")[0].connections.remove(get_tree().get_nodes_in_group("rope")[0].connections.find_last(self))
 	#self.queue_free()
+	$outline.visible = false
 	$icon.visible = false
 	$explosion.emitting = true
 	$Control.visible = false
 	dead = true
+	get_tree().get_nodes_in_group("player")[0].stones += toGive
 	
 func take_damage(num):
 	if self in get_tree().get_nodes_in_group("rope")[0].connections:
-		print("disconnected")
 		get_tree().get_nodes_in_group("rope")[0].connections.remove(get_tree().get_nodes_in_group("rope")[0].connections.find_last(self))
 		move_and_slide(Vector2(0, 0))
 		stretch = false
@@ -86,7 +91,6 @@ func take_damage(num):
 		die()
 
 func _process(delta):
-	#print(get_property_list())
 	
 	if dead and not $explosion.emitting:
 		queue_free()
@@ -181,11 +185,10 @@ func _process(delta):
 
 func _on_collisionArea_body_entered(body):
 	if "enemy" in body.name:
-		print("enemy")
+		#print("hit: " + body.name + " by: " + name)
 		take_damage(dm)
 		body.take_damage(dm)
 	if "block" in body.name:
-		print("block")
 		if body.pull:
 			take_damage(dm*2)
 			body.stretch = false
@@ -197,7 +200,6 @@ func _on_collisionArea_body_entered(body):
 	if "shield" in body.name:
 		if true:#body.energy >= dm:
 			body.energy -= dm
-			print("shield")
 			move_and_slide(-global_position.direction_to(body.global_position))
 			take_damage(dm)
 
@@ -205,6 +207,7 @@ func _on_collisionArea_body_entered(body):
 
 
 func _on_Button_pressed():
+	$outline.visible = true
 	self.connected = true
 	get_tree().get_nodes_in_group("rope")[0].add_connection(self)
-	$outline.visible = true
+	
