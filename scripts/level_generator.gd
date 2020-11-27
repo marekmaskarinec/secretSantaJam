@@ -21,9 +21,9 @@ func _ready():
 	randomize()
 	spawn_nodes = get_children()
 	num_of_nodes = len(spawn_nodes)-1
-	max_spawners = int(len(spawn_nodes)*0.2)
-	max_tanks = int(1)
-	max_shooters = int(len(spawn_nodes)*0.6)
+	max_spawners = int(1)
+	max_tanks = int(0)
+	max_shooters = int(len(spawn_nodes)*0.4)
 	max_swarms = int(len(spawn_nodes)*0.8)
 	
 	enemy_map = {
@@ -71,7 +71,7 @@ func _process(delta):
 		
 	if get_child_count() < num_of_nodes:
 		print("opening door")
-		$door/Tween.interpolate_property($door, "rotation_degrees", $door.rotation_degrees, $door.rotation_degrees+90, 1, Tween.TRANS_BOUNCE, Tween.EASE_IN)
-		$door/Tween.start()
-		num_of_nodes = -1
+		#$door/Tween.interpolate_property($door, "rotation_degrees", $door.rotation_degrees, $door.rotation_degrees+90, 1, Tween.TRANS_BOUNCE, Tween.EASE_IN)
+		#$door/Tween.start()
+		#num_of_nodes = -1
 	

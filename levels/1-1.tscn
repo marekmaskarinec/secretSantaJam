@@ -7,7 +7,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=5]
 [ext_resource path="res://scenes/enemy_swarm.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/portal.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/enemy_spawner.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/chest.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 79.6641, 32.5986 )
@@ -24,8 +24,14 @@ tile_data = PoolIntArray( -327676, 24, 0, -327675, 24, 0, -327674, 24, 0, -32767
 [node name="player" parent="." instance=ExtResource( 3 )]
 position = Vector2( -46.9448, 57.2662 )
 
+[node name="3" parent="." instance=ExtResource( 9 )]
+position = Vector2( -101.708, 976.054 )
+
 [node name="enemy_swarm" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1009.3, -91.8143 )
+
+[node name="enemy_swarm2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 846.143, 115.84 )
 
 [node name="room1" type="Node2D" parent="."]
 position = Vector2( 794.578, 1120 )
@@ -62,9 +68,6 @@ position = Vector2( 75, 30 )
 shape = SubResource( 1 )
 
 [node name="Tween" type="Tween" parent="room1/door"]
-
-[node name="enemy_spawner" parent="room1" instance=ExtResource( 8 )]
-position = Vector2( 153.535, -25.111 )
 
 [node name="portal" parent="." instance=ExtResource( 7 )]
 position = Vector2( -516.657, 1963.1 )

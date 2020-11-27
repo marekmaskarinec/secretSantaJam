@@ -71,6 +71,10 @@ func _process(delta):
 				$Tween.interpolate_property($Panel, "modulate", Color(0,0,0,0), Color(0,0,0,1), 0.8, Tween.TRANS_LINEAR, Tween.EASE_IN)
 				$Tween.start()
 				#get_tree().change_scene("res://scenes/pub.tscn")
+		if "chest" in oa[i].name:
+			if Input.is_action_just_pressed("ui_focus_next"):
+				self.stones += oa[i].get_parent().stones
+				oa[i].get_parent().stones = 0
 
 	if $Panel.get_modulate() == Color(0,0,0,1):
 		OS.delay_msec(400)

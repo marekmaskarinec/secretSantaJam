@@ -32,13 +32,13 @@ func swarm_attack():
 
 func _ready():
 	if "spawner" in name:
-		hp = 12
+		hp = 10
 		dm = 1
 		offset = Vector2(0, 0)
 		speed = 60
 		toGive = 2
 	if "tank" in name:
-		hp = 30
+		hp = 20
 		dm = 0
 		offset = Vector2(0, 0)
 		speed = 160
@@ -172,16 +172,17 @@ func _process(delta):
 				can_attack = true
 				
 	if "shooter" in name and path != null:
-		if get_parent().get_node("bullets").get_child_count() < 1:
-			if OS.get_datetime()["second"] - lastShot >= 2 or  OS.get_datetime()["second"] - lastShot:
-				lastShot = OS.get_datetime()["second"]
-				inst = load("res://scenes/bullet.tscn").instance()
-				playerPos = global_position.direction_to(get_tree().get_nodes_in_group("player")[0].global_position)
-				if playerPos.x < playerPos.y:
-					inst.position = position#+Vector2(playerPos.x/playerPos.y, 1)
-				else:
-					inst.position = position#+Vector2(1, playerPos.y/playerPos.y)
-				get_parent().get_node("bullets").add_child(inst)
+		if path != null:
+			if get_parent().get_node("bullets").get_child_count() < 1:
+				if OS.get_datetime()["second"] - lastShot >= 2 or OS.get_datetime()["second"] - lastShot:
+					lastShot = OS.get_datetime()["second"]
+					inst = load("res://scenes/bullet.tscn").instance()
+					playerPos = global_position.direction_to(get_tree().get_nodes_in_group("player")[0].global_position)
+					if playerPos.x < playerPos.y:
+						inst.position = position#+Vector2(playerPos.x/playerPos.y, 1)
+					else:
+						inst.position = position#+Vector2(1, playerPos.y/playerPos.y)
+					get_parent().get_node("bullets").add_child(inst)
 
 func _on_collisionArea_body_entered(body):
 	if "enemy" in body.name:
