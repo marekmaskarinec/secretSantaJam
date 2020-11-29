@@ -24,6 +24,8 @@ radius = 29.2715
 
 [node name="enemy_spawner" type="Node2D"]
 
+[node name="swarms" type="Node2D" parent="."]
+
 [node name="spawner" type="KinematicBody2D" parent="." groups=[
 "attackable",
 ]]
@@ -114,7 +116,5 @@ flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="swarms" type="Node2D" parent="."]
 [connection signal="body_entered" from="spawner/collisionArea" to="spawner" method="_on_collisionArea_body_entered"]
 [connection signal="pressed" from="spawner/Button" to="spawner" method="_on_Button_pressed"]

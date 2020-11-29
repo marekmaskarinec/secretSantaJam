@@ -3,18 +3,17 @@ extends Node2D
 
 var connections = []
 var max_connections = 1
-var lenght = 600
+var lenght = 500000
 
 func clear():
 	for i in range(len(connections)):
 		connections[i].connected = false
-		connections[i].pull = false
-		connections[i].stretch = false
+		#connections[i].pull = false
+		#connections[i].stretch = false
 		
 	connections = []
 
 func pull():
-	var tween = get_node("tween")
 	if len(connections) > 0:
 		for i in range(len(connections)):
 			if connections[i] != null:
@@ -32,8 +31,6 @@ func pull():
 	#elif len(connections) > 0 and len(connections) < 2:
 	#	connections[0].hold = true
 func stretch():
-	var tween = get_node("tween")
-	var incr
 	var used_random = false
 	if len(connections) > 0:
 		for i in range(len(connections)):
@@ -61,7 +58,7 @@ func add_connection(node):
 	if not node in connections:
 		connections.append(node)
 
-func _process(delta):
+func _process(_delta):
 	if len(connections) >= 2:
 		if connections[0].global_position.x > connections[1].global_position.x:
 			self.global_position.x = connections[0].global_position.x - (connections[0].global_position.x - connections[1].global_position.x)/2

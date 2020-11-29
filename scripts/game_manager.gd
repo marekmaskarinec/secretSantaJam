@@ -9,7 +9,7 @@ func _ready():
 	tween = get_node("player/Camera2D/UI/UiTween")
 	
 
-func _process(delta):
+func _process(_delta):
 	#slow_mo = sget_node("player/Camera2D/UI/VBoxContainer/slow_mo_progress").value
 	if false:#Input.is_action_pressed("slow_motion") and slow_mo > 0:
 		if first_press:

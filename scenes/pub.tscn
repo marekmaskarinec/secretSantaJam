@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://etc/the_pub_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
@@ -6,40 +6,58 @@
 [ext_resource path="res://sprites/bartender.png" type="Texture" id=4]
 [ext_resource path="res://sprites/bottles.png" type="Texture" id=5]
 [ext_resource path="res://sprites/chair.png" type="Texture" id=6]
+[ext_resource path="res://scripts/save_manager.gd" type="Script" id=7]
+[ext_resource path="res://scenes/portal.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10.625, 2.5 )
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.0313726, 0.0313726, 0.0313726, 1 )
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.0313726, 0.0313726, 0.0313726, 1 )
+corner_detail = 1
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 11.0269, 65.2125 )
+
+[node name="pub" type="Node2D"]
+script = ExtResource( 7 )
 
 [node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 0.6, 0.6 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 96, 96 )
 format = 1
 tile_data = PoolIntArray( 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 65536, 3, 0, 65537, 3, 0, 65538, 3, 0, 65539, 3, 0, 65540, 3, 0, 65541, 3, 0, 131072, 3, 0, 131073, 3, 0, 131074, 3, 0, 131075, 3, 0, 131076, 3, 0, 131077, 3, 0, 196608, 3, 0, 196609, 3, 0, 196610, 3, 0, 196611, 3, 0, 196612, 3, 0, 196613, 3, 0 )
 
 [node name="bartender" type="Sprite" parent="."]
-position = Vector2( 364.447, 24.2004 )
+position = Vector2( 225.922, 18.9031 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 4 )
 
 [node name="TileMap2" type="TileMap" parent="."]
+position = Vector2( -77.2238, 0.129746 )
+scale = Vector2( 0.8, 0.8 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 96, 96 )
 format = 1
 tile_data = PoolIntArray( 3, 1, 0, 4, 2, 0 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 253.503, 275.483 )
+position = Vector2( 205.237, 121.145 )
 
 [node name="TileMap3" type="TileMap" parent="."]
+scale = Vector2( 0.6, 0.6 )
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 96, 96 )
 format = 1
 tile_data = PoolIntArray( -65536, 22, 0, -65535, 13, 0, -65534, 13, 0, -65533, 13, 0, -65532, 13, 0, -65531, 21, 0, 0, 18, 0, 5, 17, 0, 65541, 17, 0, 131072, 17, 0, 131077, 17, 0, 196608, 0, 0, 196609, 13, 0, 196610, 13, 0, 196611, 13, 0, 196612, 13, 0, 196613, 14, 0 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 345.796, 67.9065 )
+position = Vector2( 217.071, 53.3389 )
 
 [node name="chair" type="Sprite" parent="StaticBody2D"]
 scale = Vector2( 0.3, 0.3 )
@@ -50,7 +68,7 @@ position = Vector2( -0.25, -2.875 )
 shape = SubResource( 1 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2( 408.367, 68.2402 )
+position = Vector2( 258.983, 53.6726 )
 
 [node name="chair" type="Sprite" parent="StaticBody2D2"]
 scale = Vector2( 0.3, 0.3 )
@@ -61,6 +79,65 @@ position = Vector2( -0.25, -2.875 )
 shape = SubResource( 1 )
 
 [node name="bottles" type="Sprite" parent="."]
-position = Vector2( 457.91, 43.5421 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 283.844, 35.1331 )
+scale = Vector2( 0.16, 0.16 )
 texture = ExtResource( 5 )
+
+[node name="Panel3" type="Panel" parent="."]
+margin_left = 7.68192
+margin_top = -97.2205
+margin_right = 537.682
+margin_bottom = -44.2205
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="."]
+margin_left = 327.0
+margin_top = -52.0
+margin_right = 459.0
+margin_bottom = 334.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="portal_hider2" type="Panel" parent="."]
+margin_left = -114.342
+margin_top = -27.4645
+margin_right = 17.6583
+margin_bottom = 358.535
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="portal_panel" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -1825.06
+margin_top = -1214.65
+margin_right = 2435.94
+margin_bottom = 1802.35
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="portal" parent="." instance=ExtResource( 8 )]
+position = Vector2( 33.7726, 101.992 )
+scale = Vector2( 2.6, 2.6 )
+
+[node name="portal_hider" type="Panel" parent="."]
+margin_left = -114.229
+margin_top = -6.29961
+margin_right = 17.7708
+margin_bottom = 379.7
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 4.59621, 89.0955 )
+shape = SubResource( 4 )

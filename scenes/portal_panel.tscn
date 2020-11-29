@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="portal_panel" type="Panel"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -1588.0
+margin_top = 59.0
+margin_right = 1502.0
+margin_bottom = 2115.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

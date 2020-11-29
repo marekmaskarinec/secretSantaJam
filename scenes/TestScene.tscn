@@ -7,7 +7,8 @@
 [ext_resource path="res://scenes/enemy_spawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/enemy_tank.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/game_manager.gd" type="Script" id=7]
-[ext_resource path="res://scenes/enemy_shooter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/enemy_shooter_old.tscn" type="PackedScene" id=8]
+
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 7 )

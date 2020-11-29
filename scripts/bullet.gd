@@ -14,7 +14,7 @@ func handle_col(col):
 			col.take_damage(2)
 		self.queue_free()
 	
-func _process(delta):
+func _process(_delta):
 	if collision == null:
 		collision = move_and_collide(motion)
 	else:

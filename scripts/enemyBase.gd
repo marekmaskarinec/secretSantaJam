@@ -43,6 +43,12 @@ func _ready():
 		offset = Vector2(0, 0)
 		speed = 160
 		toGive = 1
+	if "basic" in name:
+		hp = 4
+		dm = 0
+		offset = Vector2(randf()/2, randf()/2)
+		speed = 200
+		toGive = 1
 	elif "swarm" in name:
 		hp = 1
 		dm = 1
@@ -51,10 +57,10 @@ func _ready():
 		$CPUParticles2D.emitting = true
 		toGive = 0
 	elif "shooter" in name:
-		hp = 4
+		hp = 2
 		dm = 1
 		offset = Vector2(0, 0)
-		speed = 4
+		speed = 20
 		lastShot = OS.get_datetime()["second"]
 		toGive = 0
 	get_node("Control/ProgressBar").max_value = hp
@@ -93,7 +99,10 @@ func take_damage(num):
 func _process(delta):
 	
 	if dead and not $explosion.emitting:
-		queue_free()
+		if not "swarm" in name and not "basic" in name:
+			get_parent().queue_free()
+		else:
+			queue_free()
 	
 	var ob = get_node("Area2D").get_overlapping_bodies()
 	for i in range(len(ob)):
@@ -162,7 +171,7 @@ func _process(delta):
 			inst.position = position + Vector2(randf(), randf())/2
 			get_parent().get_node("swarms").add_child(inst)
 
-	if "swarm" in name:
+	if "swarm" in name or "basic" in name:
 		oa = $collisionArea.get_overlapping_areas()
 		for i in range(len($collisionArea.get_overlapping_areas())):
 			if "hitbox" in oa[i].name and can_attack:
@@ -172,7 +181,7 @@ func _process(delta):
 				can_attack = true
 				
 	if "shooter" in name and path != null:
-		if path != null:
+		if path.size() > 0:
 			if get_parent().get_node("bullets").get_child_count() < 1:
 				if OS.get_datetime()["second"] - lastShot >= 2 or OS.get_datetime()["second"] - lastShot:
 					lastShot = OS.get_datetime()["second"]
@@ -208,7 +217,8 @@ func _on_collisionArea_body_entered(body):
 
 
 func _on_Button_pressed():
-	$outline.visible = true
-	self.connected = true
-	get_tree().get_nodes_in_group("rope")[0].add_connection(self)
+	if path.size() > 0:
+		$outline.visible = true
+		self.connected = true
+		get_tree().get_nodes_in_group("rope")[0].add_connection(self)
 	

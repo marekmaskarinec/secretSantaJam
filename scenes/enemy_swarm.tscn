@@ -16,7 +16,7 @@ bg_color = Color( 0.4, 1, 0.890196, 0.678431 )
 extents = Vector2( 9.00444, 7.72128 )
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 556.179
+radius = 383.821
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 12.6531
