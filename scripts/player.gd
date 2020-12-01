@@ -10,6 +10,9 @@ var oa
 var stones = 0
 var inst
 var UI
+var max_hp = 60
+var shop
+var in_shop = false
 
 func take_damage(dm):
 	if hp - dm > 0:# and OS.get_datetime()["second"] - lastHit > 1:
@@ -29,6 +32,8 @@ func _ready():
 	get_node("AnimationPlayer").play("main")
 	UI = get_node("../UI")
 	
+	shop = load("res://scenes/shop.tscn")
+	hp = max_hp
 	
 func _process(_delta):
 	
@@ -88,16 +93,22 @@ func _process(_delta):
 			if Input.is_action_just_pressed("ui_focus_next"):
 				take_damage(-int(oa[i].get_parent().name))				
 				oa[i].name = "0"
+		if "shop" in oa[i].name and not in_shop:
+			if Input.is_action_just_pressed("ui_focus_next"):
+				in_shop = true
+				add_child(shop.instance())
 
 	if get_node("../portal_panel").get_modulate() == Color(0,0,0,1):
 		OS.delay_msec(400)
 		inst = load("res://scenes/pub.tscn").instance()
 		inst.start = false
 		if get_tree().get_root().get_node("level") != null:
+			#inst.save()
 			get_tree().get_root().add_child(inst)
 			get_tree().get_root().get_node("level").queue_free()
 		else:
 			get_tree().change_scene("res://levels/" + get_tree().get_root().get_node("pub").level + ".tscn")
+			get_tree().get_root().get_node("pub").queue_free()
 			
 	if UI != null:
 		UI.get_node("VBoxContainer/stoneLabel").text = str(stones)

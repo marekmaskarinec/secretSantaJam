@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://sprites/enemy_shooter.png" type="Texture" id=1]
-[ext_resource path="res://scripts/enemyBase.gd" type="Script" id=2]
+[ext_resource path="res://scripts/enemy_boss1.gd" type="Script" id=2]
 [ext_resource path="res://scripts/enemy_clicker.gd" type="Script" id=3]
 [ext_resource path="res://sprites/robot-outline.png" type="Texture" id=4]
 [ext_resource path="res://etc/stylebox.tres" type="StyleBox" id=5]

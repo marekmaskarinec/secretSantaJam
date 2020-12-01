@@ -38,8 +38,8 @@ func _ready():
 	max_spawners = int(1)
 	max_tanks = int(0)
 	max_shooters = int(len(spawn_nodes)*0.4)
-	max_basics = int(len(spawn_nodes)*0.8)
-	max_swarms = int(len(spawn_nodes)*0.6)
+	max_basics = int(len(spawn_nodes)*0.6)
+	max_swarms = int(len(spawn_nodes)*0.8)
 	
 	enemy_map = {
 		0: load("res://scenes/enemy_spawner.tscn"),

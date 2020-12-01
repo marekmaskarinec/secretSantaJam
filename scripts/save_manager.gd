@@ -5,11 +5,18 @@ var levels = ["1-1", "1-2", "1-3", "1-4", "2-1", "2-2", "2-3", "2-4"]
 var start = true
 
 func _ready():
+	print(get_tree().get_nodes_in_group("player")[0].stones)
 	if start:
+		print("start")
 		load_game()
 	else:
+		#load_game()
+		print("alredy been in pub")
 		level = levels[levels.bsearch(level)+1]
 		save()
+		print(get_tree().get_nodes_in_group("player")[0].stones)
+
+		#load_game()
 
 func get_blank_map():
 	return {
@@ -23,7 +30,7 @@ func get_blank_map():
 func save():
 	var dict = get_blank_map()
 	dict["stones"] = get_tree().get_nodes_in_group("player")[0].stones
-	dict["max_hp"] = get_tree().get_nodes_in_group("player")[0].hp
+	dict["max_hp"] = get_tree().get_nodes_in_group("player")[0].max_hp
 	dict["speed"] = get_tree().get_nodes_in_group("player")[0].SPEED
 	dict["current_level"] = self.level
 	
@@ -43,3 +50,5 @@ func load_game():
 	get_tree().get_nodes_in_group("player")[0].stones = data["stones"]
 	get_tree().get_nodes_in_group("player")[0].hp = data["max_hp"]
 	get_tree().get_nodes_in_group("player")[0].SPEED = data["speed"]
+
+
