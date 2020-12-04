@@ -23,57 +23,20 @@ var playerPos
 var toGive
 var explosion
 
-func swarm_attack():
-	var player = get_tree().get_nodes_in_group("player")[0]
-	self.move_and_slide(global_position.direction_to(player.global_position)*5)
-	can_attack = false
-	player.take_damage(dm)
-	#self.take_damage(dm)
-	stretch = true
-
 func _ready():
-	if "spawner" in name:
-		hp = 10
-		dm = 1
-		offset = Vector2(0, 0)
-		speed = 60
-		toGive = 2
-	if "tank" in name:
-		hp = 20
-		dm = 0
-		offset = Vector2(0, 0)
-		speed = 160
-		toGive = 1
-	if "basic" in name:
-		hp = 4
-		dm = 0
-		offset = Vector2(randf()/2, randf()/2)
-		speed = 200
-		toGive = 1
-	elif "swarm" in name:
-		hp = 1
-		dm = 1
-		offset = Vector2(randf()+0.5, randf()+0.5)
-		speed = 300
-		$CPUParticles2D.emitting = true
-		toGive = 0
-	elif "shooter" in name:
-		hp = 2
-		dm = 1
-		offset = Vector2(0, 0)
-		speed = 20
-		lastShot = OS.get_datetime()["second"]
-		toGive = 0
+	hp = 20
+	dm = 1
+	offset = Vector2(0, 0)
+	speed = 200
+	lastShot = OS.get_datetime()["second"]
+	toGive = 50
 	get_node("Control/ProgressBar").max_value = hp
 	#randomize()
 	explosion = load("res://scenes/explosion.tscn")
 
 func explosion_played():
 	print("sound finnished")
-	if not "swarm" in name and not "basic" in name:
-		get_parent().queue_free()
-	else:
-		queue_free()
+	get_parent().queue_free()
 	
 
 func die():
@@ -175,33 +138,17 @@ func _process(delta):
 	#	inst.speed = self.global_position.direction_to(get_tree().get_nodes_in_group("player")[0].global_position)
 	#	get_node("bullets").add_child(inst)
 	lastPos = position
-
-	if "spawner" in name:
-		if get_parent().get_node("swarms").get_child_count() < int(hp/4):
-			inst = load("res://scenes/enemy_swarm.tscn").instance()
-			inst.position = position + Vector2(randf(), randf())/2
-			get_parent().get_node("swarms").add_child(inst)
-
-	if "swarm" in name or "basic" in name:
-		oa = $collisionArea.get_overlapping_areas()
-		for i in range(len($collisionArea.get_overlapping_areas())):
-			if "hitbox" in oa[i].name and can_attack:
-				swarm_attack()
-				#print("attack")
-			else:
-				can_attack = true
-				
-	if "shooter" in name and path != null:
-		if path.size() > 0:
-			if get_parent().get_node("bullets").get_child_count() < 1:
-				if OS.get_datetime()["second"] - lastShot >= 2 or OS.get_datetime()["second"] - lastShot:
+	
+	
+	#print(get_parent().get_node("bullets").get_child_count())
+	if path.size() > 0:
+		if get_parent().get_node("bullets").get_child_count() < 30:
+			if OS.get_datetime()["second"] - lastShot >= 2 or OS.get_datetime()["second"] - lastShot:
+				for i in range(60):
 					lastShot = OS.get_datetime()["second"]
-					inst = load("res://scenes/bullet.tscn").instance()
-					playerPos = global_position.direction_to(get_tree().get_nodes_in_group("player")[0].global_position)
-					if playerPos.x < playerPos.y:
-						inst.position = position#+Vector2(playerPos.x/playerPos.y, 1)
-					else:
-						inst.position = position#+Vector2(1, playerPos.y/playerPos.y)
+					inst = load("res://scenes/bullet_boss.tscn").instance()
+					inst.position = position + Vector2((randf()-0.5)/2, (randf()-0.5)/2)
+					inst.rotation_degrees = randi()%360
 					get_parent().get_node("bullets").add_child(inst)
 
 func _on_collisionArea_body_entered(body):

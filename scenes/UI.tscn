@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://etc/stylebox.tres" type="StyleBox" id=1]
 [ext_resource path="res://sprites/stone.png" type="Texture" id=2]
 [ext_resource path="res://etc/I-pixel-u.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scenes/esc_screen.tscn" type="PackedScene" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -60,3 +61,10 @@ align = 1
 valign = 1
 
 [node name="UiTween" type="Tween" parent="."]
+
+[node name="esc_screen" parent="." instance=ExtResource( 4 )]
+visible = false
+margin_left = 16.4142
+margin_top = -208.557
+margin_right = -94.5858
+margin_bottom = -281.557

@@ -38,10 +38,15 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Control"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = -86.2034
+margin_top = 263.411
+margin_right = 25.7966
+margin_bottom = 343.411
 custom_fonts/font = SubResource( 1 )
-text = "1-1"
+text = "1-4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="player" parent="." instance=ExtResource( 3 )]
 position = Vector2( -46.9448, 82.1635 )

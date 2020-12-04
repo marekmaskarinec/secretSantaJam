@@ -2,6 +2,6 @@
 
 [ext_resource path="res://sounds/explosion.wav" type="AudioStream" id=1]
 
-[node name="explosion" type="AudioStreamPlayer2D"]
+[node name="explosion_sound" type="AudioStreamPlayer2D"]
 stream = ExtResource( 1 )
 autoplay = true

@@ -70,6 +70,7 @@ func _ready():
 
 func explosion_played():
 	print("sound finnished")
+	$explosion_sound.queue_free()
 	if not "swarm" in name and not "basic" in name:
 		get_parent().queue_free()
 	else:
@@ -80,6 +81,7 @@ func die():
 	inst = explosion.instance()
 	inst.connect("finished", self, "explosion_played")
 	add_child(inst)
+	$explosion_sound.autoplay = false
 	if self in get_tree().get_nodes_in_group("rope")[0].connections:
 		get_tree().get_nodes_in_group("rope")[0].connections.remove(get_tree().get_nodes_in_group("rope")[0].connections.find_last(self))
 	#self.queue_free()
@@ -105,9 +107,13 @@ func take_damage(num):
 		get_node("Control/ProgressBar").value = hp
 		
 	else:
-		die()
+		if not dead:
+			die()
 
 func _process(delta):
+	
+	if dead:
+		self.connected = false
 	
 	#if dead and not $explosion.emitting:
 	#	if not "swarm" in name and not "basic" in name:
@@ -128,7 +134,7 @@ func _process(delta):
 		position -= offset
 
 	
-	while distance_to_walk > 0 and path.size() > 0:
+	while distance_to_walk > 0 and path.size() > 0 and not dead:
 		var distance_to_next_point = global_position.distance_to(path[0])
 		if distance_to_walk <= distance_to_next_point:
 			global_position += global_position.direction_to(path[0]) * distance_to_walk
