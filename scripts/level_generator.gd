@@ -26,9 +26,10 @@ func _ready():
 	var data = parse_json(save_game.get_as_text())
 	save_game.close()
 	
-	get_tree().get_nodes_in_group("player")[0].stones = data["stones"]
-	get_tree().get_nodes_in_group("player")[0].hp = data["max_hp"]
-	get_tree().get_nodes_in_group("player")[0].SPEED = data["speed"]
+	if data != null:
+		get_tree().get_nodes_in_group("player")[0].stones = data["stones"]
+		get_tree().get_nodes_in_group("player")[0].hp = data["max_hp"]
+		get_tree().get_nodes_in_group("player")[0].SPEED = data["speed"]
 
 	
 	
@@ -82,7 +83,7 @@ func _ready():
 			else:
 				i = 0
 
-	print(enemies)
+	#print(enemies)
 	
 func _process(_delta):
 	

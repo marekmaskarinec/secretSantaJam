@@ -161,3 +161,5 @@ margin_bottom = 189.845
 [node name="portal" parent="." instance=ExtResource( 7 )]
 position = Vector2( -29.8906, -725.25 )
 scale = Vector2( 3, 3 )
+
+[node name="2" type="Node2D" parent="."]

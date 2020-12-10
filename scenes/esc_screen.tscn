@@ -50,3 +50,4 @@ margin_bottom = 165.0
 custom_fonts/font = SubResource( 2 )
 text = "QUIT"
 flat = true
+[connection signal="pressed" from="VBoxContainer/quitButton" to="." method="_on_quitButton_pressed"]

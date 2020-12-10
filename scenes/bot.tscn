@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sprites/bartender.png" type="Texture" id=1]
+[ext_resource path="res://scenes/bot_particles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/bot.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 23.5502, 18.0913 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "New Anim"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("StaticBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -2 ), Vector2( 0, 0 ) ]
+}
+
+[node name="bot" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 0, -1.42525 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="bartender" type="Sprite" parent="StaticBody2D"]
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 0, 30 )
+shape = SubResource( 1 )
+
+[node name="CPUParticles2D" parent="StaticBody2D" instance=ExtResource( 2 )]
+position = Vector2( 0, 47 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/New Anim" = SubResource( 2 )

@@ -20,6 +20,10 @@ run/main_scene="res://scenes/pub.tscn"
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://icon.png"
 
+[autoload]
+
+Arcade="*res://scripts/arcade.gd"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "Todo_Manager" )

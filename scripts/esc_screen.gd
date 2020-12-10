@@ -3,6 +3,7 @@ extends Control
 var active = false
 
 func _process(_delta):
+	self.rect_position = -get_viewport_rect().size/8
 	if Input.is_action_just_pressed("ui_cancel"):
 		if not active:
 			active = true
@@ -12,3 +13,7 @@ func _process(_delta):
 			active = false
 			self.visible = false
 			get_tree().paused = false
+
+
+func _on_quitButton_pressed():
+	get_tree().quit()

@@ -32,6 +32,36 @@ func swarm_attack():
 	stretch = true
 
 func _ready():
+	if get_tree().get_root().get_node("level/2") != null or get_tree().get_root().get_node("arcade/2") != null:
+		var sprite_map = {
+			"enemy_spawner": "res://sprites/spawner2.png",
+			"enemy_basic": "res://sprites/basic2.png",
+			"enemy_swarm": "res://sprites/spawner2.png",
+			"shooter": "res://sprites/shooter2.png",
+		}
+		if "shooter" in name:
+			$icon.texture = load("res://sprites/shooter2.png")
+			$outline.texture = load("res://sprites/outline2-2.png")
+			$icon.scale = Vector2(0.8, 0.8)
+			$outline.scale = Vector2(0.84, 0.84)
+		if "swarm" in name:
+			$icon.texture = load("res://sprites/spawner2.png")
+			$outline.texture = load("res://sprites/outline2-1.png")
+			$icon.scale *= 1.5
+			$outline.scale *= 1.5
+			if get_parent().name != "swarms":
+				$AudioStreamPlayer2D2.playing = true
+		if "spawner" in name:
+			$outline.texture = load("res://sprites/outline2-1.png")
+			$icon.texture = load("res://sprites/spawner2.png")
+			$icon.scale *= 1.5
+			$outline.scale *= 1.5
+		if "basic" in name:
+			$icon.texture = load("res://sprites/basic2.png")
+			$outline.texture = load("res://sprites/outline2-2.png")
+			$icon.scale *= 1.5
+			$outline.scale *= 1.5
+	
 	if "spawner" in name:
 		hp = 10
 		dm = 1
@@ -69,7 +99,7 @@ func _ready():
 	explosion = load("res://scenes/explosion.tscn")
 
 func explosion_played():
-	print("sound finnished")
+	#print("sound finnished")
 	$explosion_sound.queue_free()
 	if not "swarm" in name and not "basic" in name:
 		get_parent().queue_free()
@@ -90,7 +120,10 @@ func die():
 	$explosion.emitting = true
 	$Control.visible = false
 	dead = true
-	get_tree().get_nodes_in_group("player")[0].stones += toGive
+	if get_tree().get_root().get_node("arcade") != null and get_parent().name != "swarms":
+		get_tree().get_root().get_node("arcade/room1").score += toGive+1*10
+	else:
+		get_tree().get_nodes_in_group("player")[0].stones += toGive
 	
 func take_damage(num):
 	if self in get_tree().get_nodes_in_group("rope")[0].connections:

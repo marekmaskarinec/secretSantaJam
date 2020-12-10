@@ -1,29 +1,40 @@
 extends Node2D
 
 var level = "1-1"
-var levels = ["1-1", "1-2", "1-3", "1-4", "2-1", "2-2", "2-3", "2-4"]
+var levels = ["1-1", "1-2", "1-3", "1-4", "1-5", "2-1", "2-2", "2-3", "2-4", "2-5", "1-1"]
 var start = true
 
 func _ready():
-	print(get_tree().get_nodes_in_group("player")[0].stones)
 	if start:
-		print("start")
+		#print("start")
+		#print(get_parent())
 		load_game()
 	else:
 		#load_game()
-		print("alredy been in pub")
+		#print("alredy been in pub")
+		#print(level)
 		level = levels[levels.bsearch(level)+1]
+		#print(levels.bsearch(level)+1)
+		#print(level)
 		save()
-		print(get_tree().get_nodes_in_group("player")[0].stones)
+		#print(get_tree().get_nodes_in_group("player")[0].stones)
 
 		#load_game()
 
+		
+		if level == "1-2":
+			$Bartender_dialog/Label.text = "An arcade machine has been added. You can use it to train for upcoming battles"
+			
+	if level == "1-1" and $arcade != null:
+		$arcade.queue_free()
+		$Bartender_dialog/Label.text = "Welcome to insert name. Walk over to the portal and press TAB to enter a level."
+			
 func get_blank_map():
 	return {
 		"player_name": "player",
 		"stones": 0,
 		"current_level": "1-1",
-		"max_hp": 60,
+		"max_hp": 20,
 		"speed": 340,
 	}
 	
@@ -45,10 +56,17 @@ func load_game():
 	var data = parse_json(save_game.get_as_text())
 	save_game.close()
 	
+	print(get_tree().get_nodes_in_group("player")[0])
 	
-	self.level = data["current_level"]
-	get_tree().get_nodes_in_group("player")[0].stones = data["stones"]
-	get_tree().get_nodes_in_group("player")[0].hp = data["max_hp"]
-	get_tree().get_nodes_in_group("player")[0].SPEED = data["speed"]
+	if data != null:
+		self.level = data["current_level"]
+		if get_parent() in get_tree().get_nodes_in_group("player"):
+			get_parent().stones = data["stones"]
+			get_parent().hp = data["max_hp"]
+			get_parent().SPEED = data["speed"]
+		else:
+			get_tree().get_nodes_in_group("player")[0].stones = data["stones"]
+			get_tree().get_nodes_in_group("player")[0].hp = data["max_hp"]
+			get_tree().get_nodes_in_group("player")[0].SPEED = data["speed"]
 
 

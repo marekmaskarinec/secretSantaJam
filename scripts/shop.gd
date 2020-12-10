@@ -7,7 +7,7 @@ var cost = 0
 
 func _ready():
 	get_tree().get_root().get_node("pub").load_game()
-	print(get_tree().get_nodes_in_group("player")[0])
+	#print(get_tree().get_nodes_in_group("player")[0])
 	self.stones = get_tree().get_nodes_in_group("player")[0].stones
 	self.rect_global_position = -get_viewport_rect().size/4
 	$VBoxContainer/Label.text = "STORE " + str(stones) + "G"

@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://etc/floor_tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scripts/game_manager.gd" type="Script" id=2]
+[ext_resource path="res://scripts/UI.gd" type="Script" id=3]
+[ext_resource path="res://scripts/level_generator.gd" type="Script" id=4]
+[ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://etc/tileset.tres" type="TileSet" id=6]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/door.tscn" type="PackedScene" id=8]
+
+[node name="level" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="floor" type="TileMap" parent="."]
+position = Vector2( 0, 1 )
+scale = Vector2( 0.6, 0.6 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 96, 96 )
+format = 1
+
+[node name="Control" type="Control" parent="."]
+margin_left = -196.0
+margin_top = -251.0
+margin_right = -98.0
+margin_bottom = -173.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player" parent="." instance=ExtResource( 7 )]
+position = Vector2( -46.9448, 82.1635 )
+
+[node name="room1" type="Node2D" parent="."]
+position = Vector2( 492.904, 686.177 )
+script = ExtResource( 4 )
+
+[node name="Node2D8" type="Node2D" parent="room1"]
+position = Vector2( -201.776, -24.8773 )
+
+[node name="door" parent="room1" instance=ExtResource( 8 )]
+
+[node name="Navigation2D" type="Navigation2D" parent="." groups=[
+"pathfinder",
+]]
+
+[node name="TileMap" type="TileMap" parent="Navigation2D"]
+position = Vector2( 1.68176, 0 )
+scale = Vector2( 0.6, 0.6 )
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 96, 96 )
+format = 1
+tile_data = PoolIntArray( 131075, 23, 0, 196611, 23, 0, 327681, 23, 0, 327682, 23, 0, 327683, 23, 0 )
+
+[node name="UI" parent="." instance=ExtResource( 5 )]
+margin_left = -317.516
+margin_top = -140.122
+margin_right = -297.516
+margin_bottom = -120.122
+rect_scale = Vector2( 1.2, 1.2 )
+script = ExtResource( 3 )

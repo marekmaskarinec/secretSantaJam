@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://etc/the_pub_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,10 @@
 [ext_resource path="res://scripts/save_manager.gd" type="Script" id=7]
 [ext_resource path="res://scenes/portal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://sounds/pub_music.ogg" type="AudioStream" id=9]
+[ext_resource path="res://sprites/arcade.png" type="Texture" id=10]
+[ext_resource path="res://sprites/arcade-screen1.png" type="Texture" id=11]
+[ext_resource path="res://etc/I-pixel-u.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://scenes/bot.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.0269, 65.2125 )
@@ -20,11 +24,183 @@ extents = Vector2( 10.625, 2.5 )
 bg_color = Color( 0.0313726, 0.0313726, 0.0313726, 1 )
 corner_detail = 1
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 12 )
+
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.0313726, 0.0313726, 0.0313726, 1 )
 corner_detail = 1
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 24, 0, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 48, 0, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 72, 0, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 12, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 24, 12, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 48, 12, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 72, 12, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 24, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 24, 24, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 48, 24, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 72, 24, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 36, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 24, 36, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 48, 36, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 72, 36, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 48, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 24, 48, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 48, 48, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 72, 48, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 60, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 24, 60, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 48, 60, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 72, 60, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 72, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 24, 72, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=32]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 48, 72, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=33]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 72, 72, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=34]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 84, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=35]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 24, 84, 24, 12 )
+
+[sub_resource type="AtlasTexture" id=36]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 48, 84, 24, 12 )
+
+[sub_resource type="SpriteFrames" id=37]
+animations = [ {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=38]
+extents = Vector2( 14.2698, 21.2077 )
+
+[sub_resource type="CircleShape2D" id=39]
+radius = 51.5392
+
+[sub_resource type="CircleShape2D" id=40]
 radius = 56.2274
 
 [node name="pub" type="Node2D"]
@@ -58,6 +234,18 @@ tile_data = PoolIntArray( 3, 1, 0, 4, 2, 0 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 205.237, 121.145 )
+
+[node name="bot" parent="." instance=ExtResource( 13 )]
+position = Vector2( 113.468, 77.0125 )
+
+[node name="bot2" parent="." instance=ExtResource( 13 )]
+position = Vector2( 147.955, 133.5 )
+
+[node name="bot3" parent="." instance=ExtResource( 13 )]
+position = Vector2( 258.455, 32.3641 )
+
+[node name="bot4" parent="." instance=ExtResource( 13 )]
+position = Vector2( 287.672, 156.349 )
 
 [node name="TileMap3" type="TileMap" parent="."]
 scale = Vector2( 0.6, 0.6 )
@@ -123,6 +311,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Bartender_dialog" type="Control" parent="."]
+margin_left = 19.1294
+margin_top = -67.928
+margin_right = 222.129
+margin_bottom = -46.928
+grow_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Bartender_dialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+custom_fonts/font = SubResource( 4 )
+align = 3
+valign = 2
+autowrap = true
+
 [node name="portal_panel" type="Panel" parent="."]
 visible = false
 modulate = Color( 1, 1, 1, 0 )
@@ -130,7 +337,7 @@ margin_left = -1825.06
 margin_top = -1214.65
 margin_right = 2435.94
 margin_bottom = 1802.35
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -139,11 +346,38 @@ __meta__ = {
 position = Vector2( 33.7726, 101.992 )
 scale = Vector2( 2.6, 2.6 )
 
+[node name="arcade" type="StaticBody2D" parent="."]
+position = Vector2( 107.48, -11.6673 )
+
+[node name="arcade" type="Sprite" parent="arcade"]
+scale = Vector2( 0.8, 0.72 )
+texture = ExtResource( 10 )
+
+[node name="arcade_screen" type="AnimatedSprite" parent="arcade/arcade"]
+show_behind_parent = true
+position = Vector2( -0.11644, 11.8608 )
+scale = Vector2( 1.06, 1.06 )
+frames = SubResource( 37 )
+frame = 22
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="arcade"]
+position = Vector2( 0, 12.875 )
+shape = SubResource( 38 )
+
+[node name="arcade_area" type="Area2D" parent="arcade"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="arcade/arcade_area"]
+shape = SubResource( 39 )
+
+[node name="bot5" parent="." instance=ExtResource( 13 )]
+position = Vector2( 104.504, 10.6386 )
+
 [node name="portal_hider" type="Panel" parent="."]
-margin_left = -114.229
-margin_top = -6.29961
-margin_right = 17.7708
-margin_bottom = 379.7
+margin_left = -114.0
+margin_top = -2.22025
+margin_right = 18.0
+margin_bottom = 383.78
 custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -154,7 +388,7 @@ position = Vector2( 218.745, 38.4737 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="shopArea"]
 position = Vector2( 12.2704, -6.37115 )
-shape = SubResource( 5 )
+shape = SubResource( 40 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 9 )

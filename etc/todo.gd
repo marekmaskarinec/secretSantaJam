@@ -1,10 +1,9 @@
 extends Node
 
-#TODO: PUB - in progress
-#TODO: more levels
-#TODO: money
-#TODO: upgrade station
-#TODO: death
 #TODO: bartender animation
-#TODO: level menu
-#TODO: tutorial
+#TODO: PUB filling
+#TODO: pub decoration
+#TODO: settings
+#TODO: final boss
+#TODO: heal animation
+#TODO: SFX
