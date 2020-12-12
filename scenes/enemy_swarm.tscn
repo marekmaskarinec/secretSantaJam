@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/killparticles.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sounds/robot_sound.wav" type="AudioStream" id=7]
 [ext_resource path="res://sounds/robot_spawn.wav" type="AudioStream" id=8]
+[ext_resource path="res://scenes/spawn_particles.tscn" type="PackedScene" id=9]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.4, 1, 0.890196, 0.678431 )
@@ -23,12 +24,7 @@ radius = 870.538
 [sub_resource type="CircleShape2D" id=5]
 radius = 12.6531
 
-[sub_resource type="Curve" id=6]
-min_value = -200.0
-max_value = 200.0
-_data = [ Vector2( 0, 200 ), 0.0, 0.0, 0, 0, Vector2( 1, -200 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=6]
 radius = 77.2798
 
 [node name="enemy_swarm" type="KinematicBody2D" groups=[
@@ -85,25 +81,7 @@ playback_speed = 1.6
 anims/scenestakeDmg = ExtResource( 5 )
 anims/takeDmg = ExtResource( 5 )
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2( 0.16684, 6.00684 )
-scale = Vector2( 2, 2 )
-emitting = false
-amount = 80
-lifetime = 0.4
-one_shot = true
-speed_scale = 1.2
-emission_shape = 1
-emission_sphere_radius = 6.0
-spread = 170.06
-gravity = Vector2( 0, -2 )
-angular_velocity = 19.46
-angular_velocity_random = 1.0
-linear_accel = 16.22
-linear_accel_random = 1.0
-linear_accel_curve = SubResource( 6 )
-color = Color( 1, 0.419608, 0.592157, 0.556863 )
-anim_speed = 32.52
+[node name="CPUParticles2D" parent="." instance=ExtResource( 9 )]
 
 [node name="explosion" parent="." instance=ExtResource( 6 )]
 position = Vector2( 0, 2.28189 )
@@ -114,7 +92,7 @@ script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="clickArea"]
 position = Vector2( 0.0222626, 2.14926 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="Button" type="Button" parent="."]
 margin_left = -60.0

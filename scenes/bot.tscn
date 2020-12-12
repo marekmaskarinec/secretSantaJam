@@ -2,7 +2,8 @@
 
 [ext_resource path="res://sprites/bartender.png" type="Texture" id=1]
 [ext_resource path="res://scenes/bot_particles.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/bot.gd" type="Script" id=3]
+[ext_resource path="res://scripts/bot.gd" type="Script" id=3]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 23.5502, 18.0913 )

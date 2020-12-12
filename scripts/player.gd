@@ -24,7 +24,7 @@ func take_damage(dm):
 		if dm > 0:
 			$AnimationPlayer2.play("damage")
 		elif dm < 0:
-			pass
+			$heal_particles.emitting = true
 		#$Camera2D/UI/VBoxContainer/HPBar.value = hp
 		#print(hp)
 	else:
@@ -96,7 +96,7 @@ func _process(_delta):
 				#add_child(load("res://scenes/scene_trans.tscn").instance())
 				if get_parent().name == "pub" and get_node("../arcade") != null:
 					get_node("../arcade").visible = false
-					get_node("../bot5").visible = false
+					#get_node("../bot5").visible = false
 				get_node("../portal_panel").visible = true
 				$Tween.interpolate_property(get_node("../portal_panel"), "modulate", Color(0,0,0,0), Color(0,0,0,1), 0.8, Tween.TRANS_LINEAR, Tween.EASE_IN)
 				$Tween.start()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/character.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/save_manager.gd" type="Script" id=5]
 [ext_resource path="res://scenes/bot_particles.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/heal_particles.tscn" type="PackedScene" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -153,6 +154,10 @@ playing = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 5.96704 )
 shape = SubResource( 7 )
+
+[node name="heal_particles" parent="." instance=ExtResource( 7 )]
+position = Vector2( 0, 7 )
+scale = Vector2( 3, 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/main = SubResource( 8 )

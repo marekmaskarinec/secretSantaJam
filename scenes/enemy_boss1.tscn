@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://sprites/boss1.png" type="Texture" id=1]
 [ext_resource path="res://scripts/enemy_boss1.gd" type="Script" id=2]
 [ext_resource path="res://scripts/enemy_clicker.gd" type="Script" id=3]
+[ext_resource path="res://sprites/boss1-outline.png" type="Texture" id=4]
 [ext_resource path="res://etc/stylebox.tres" type="StyleBox" id=5]
 [ext_resource path="res://etc/scenestakeDmg.tres" type="Animation" id=6]
 [ext_resource path="res://scenes/killparticles.tscn" type="PackedScene" id=7]
@@ -57,9 +58,9 @@ shape = SubResource( 2 )
 disabled = true
 
 [node name="outline" type="Sprite" parent="shooter"]
-modulate = Color( 0, 1, 0.623529, 1 )
+visible = false
 scale = Vector2( 1.1, 1.1 )
-texture = ExtResource( 1 )
+texture = ExtResource( 4 )
 
 [node name="icon" type="Sprite" parent="shooter"]
 texture = ExtResource( 1 )

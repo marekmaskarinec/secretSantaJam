@@ -3,7 +3,7 @@
 [ext_resource path="res://etc/floor_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scripts/game_manager.gd" type="Script" id=2]
 [ext_resource path="res://scripts/UI.gd" type="Script" id=3]
-[ext_resource path="res://scripts/arcade_manager.gd" type="Script" id=4]
+[ext_resource path="res://scenes/enemy_boss2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://etc/tileset.tres" type="TileSet" id=6]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=7]
@@ -40,7 +40,6 @@ position = Vector2( 184.45, 88.6855 )
 
 [node name="room1" type="Node2D" parent="."]
 position = Vector2( 457.586, 415.408 )
-script = ExtResource( 4 )
 
 [node name="Node2D8" type="Node2D" parent="room1"]
 position = Vector2( -642.753, -39.9605 )
@@ -123,3 +122,6 @@ script = ExtResource( 3 )
 
 [node name="portal_panel" parent="." instance=ExtResource( 13 )]
 visible = false
+
+[node name="enemy_spawner" parent="." instance=ExtResource( 4 )]
+position = Vector2( 315.062, -32.0281 )

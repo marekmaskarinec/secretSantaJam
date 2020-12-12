@@ -14,7 +14,7 @@ func _ready():
 	print($VBoxContainer.rect_size)
 	self.rect_position = -$VBoxContainer.rect_size
 	get_node("../../Navigation2D").visible = false
-	get_node("../../TeileMap").visible = false
+	get_node("../../TileMap").visible = false
 	$Tween.interpolate_property(self, "modulate", Color(0,0,0,0), Color(0,0,0,1), 6, Tween.TRANS_QUAD, Tween.EASE_OUT)
 
 func save():
