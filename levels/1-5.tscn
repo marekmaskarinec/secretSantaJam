@@ -76,6 +76,30 @@ position = Vector2( 68.9927, -203.147 )
 [node name="Node2D11" type="Node2D" parent="room1"]
 position = Vector2( -393.5, -114.012 )
 
+[node name="Node2D12" type="Node2D" parent="room1"]
+position = Vector2( -231.683, -152.968 )
+
+[node name="Node2D13" type="Node2D" parent="room1"]
+position = Vector2( -72.8623, -194.921 )
+
+[node name="Node2D14" type="Node2D" parent="room1"]
+position = Vector2( -18.9232, -137.985 )
+
+[node name="Node2D15" type="Node2D" parent="room1"]
+position = Vector2( 100.941, -60.073 )
+
+[node name="Node2D16" type="Node2D" parent="room1"]
+position = Vector2( 124.914, 56.795 )
+
+[node name="Node2D17" type="Node2D" parent="room1"]
+position = Vector2( 127.911, 206.626 )
+
+[node name="Node2D18" type="Node2D" parent="room1"]
+position = Vector2( 23.0294, 293.528 )
+
+[node name="Node2D19" type="Node2D" parent="room1"]
+position = Vector2( 5.04968, 167.67 )
+
 [node name="door" parent="room1" instance=ExtResource( 5 )]
 position = Vector2( -328.301, 428.719 )
 rotation = 0.0

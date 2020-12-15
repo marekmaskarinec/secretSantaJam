@@ -364,7 +364,7 @@ show_behind_parent = true
 position = Vector2( -0.11644, 11.8608 )
 scale = Vector2( 1.06, 1.06 )
 frames = SubResource( 37 )
-frame = 13
+frame = 4
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="arcade"]

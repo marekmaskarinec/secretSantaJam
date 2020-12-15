@@ -54,6 +54,36 @@ script = ExtResource( 4 )
 [node name="Node2D8" type="Node2D" parent="room1"]
 position = Vector2( -123.993, 422.77 )
 
+[node name="Node2D14" type="Node2D" parent="room1"]
+position = Vector2( -140.964, 350.645 )
+
+[node name="Node2D15" type="Node2D" parent="room1"]
+position = Vector2( -248.444, 346.402 )
+
+[node name="Node2D16" type="Node2D" parent="room1"]
+position = Vector2( -420.978, 343.574 )
+
+[node name="Node2D17" type="Node2D" parent="room1"]
+position = Vector2( -644.424, 346.402 )
+
+[node name="Node2D18" type="Node2D" parent="room1"]
+position = Vector2( -415.321, 260.135 )
+
+[node name="Node2D19" type="Node2D" parent="room1"]
+position = Vector2( -651.495, 253.064 )
+
+[node name="Node2D20" type="Node2D" parent="room1"]
+position = Vector2( -575.127, 176.697 )
+
+[node name="Node2D21" type="Node2D" parent="room1"]
+position = Vector2( -440.777, 166.797 )
+
+[node name="Node2D22" type="Node2D" parent="room1"]
+position = Vector2( -234.302, 183.768 )
+
+[node name="Node2D23" type="Node2D" parent="room1"]
+position = Vector2( -350.267, 185.182 )
+
 [node name="Node2D9" type="Node2D" parent="room1"]
 position = Vector2( -341.467, 406.896 )
 
@@ -69,6 +99,18 @@ position = Vector2( -343.055, 262.442 )
 [node name="Node2D13" type="Node2D" parent="room1"]
 position = Vector2( -157.329, 265.617 )
 
+[node name="Node2D24" type="Node2D" parent="room1"]
+position = Vector2( -154.5, 166.622 )
+
+[node name="Node2D25" type="Node2D" parent="room1"]
+position = Vector2( -482.598, 98.7398 )
+
+[node name="Node2D26" type="Node2D" parent="room1"]
+position = Vector2( -601.392, 78.9407 )
+
+[node name="Node2D27" type="Node2D" parent="room1"]
+position = Vector2( -420.373, 30.8575 )
+
 [node name="door" parent="room1" instance=ExtResource( 5 )]
 position = Vector2( 13.6442, 308.999 )
 
@@ -78,6 +120,51 @@ script = ExtResource( 4 )
 
 [node name="Node2D8" type="Node2D" parent="room2"]
 position = Vector2( -80.2667, -22.0644 )
+
+[node name="Node2D14" type="Node2D" parent="room2"]
+position = Vector2( -83.0951, 257.95 )
+
+[node name="Node2D15" type="Node2D" parent="room2"]
+position = Vector2( -81.6808, 332.903 )
+
+[node name="Node2D16" type="Node2D" parent="room2"]
+position = Vector2( -83.0951, 421.999 )
+
+[node name="Node2D17" type="Node2D" parent="room2"]
+position = Vector2( -80.2667, 523.822 )
+
+[node name="Node2D18" type="Node2D" parent="room2"]
+position = Vector2( -159.462, 523.822 )
+
+[node name="Node2D19" type="Node2D" parent="room2"]
+position = Vector2( -173.605, 406.442 )
+
+[node name="Node2D20" type="Node2D" parent="room2"]
+position = Vector2( -289.57, 272.092 )
+
+[node name="Node2D21" type="Node2D" parent="room2"]
+position = Vector2( -343.31, 100.972 )
+
+[node name="Node2D22" type="Node2D" parent="room2"]
+position = Vector2( -324.926, 20.362 )
+
+[node name="Node2D23" type="Node2D" parent="room2"]
+position = Vector2( -381.494, 246.636 )
+
+[node name="Node2D24" type="Node2D" parent="room2"]
+position = Vector2( -313.612, 487.052 )
+
+[node name="Node2D25" type="Node2D" parent="room2"]
+position = Vector2( -344.725, 390.886 )
+
+[node name="Node2D26" type="Node2D" parent="room2"]
+position = Vector2( -483.318, 139.156 )
+
+[node name="Node2D27" type="Node2D" parent="room2"]
+position = Vector2( -565.342, 45.8178 )
+
+[node name="Node2D28" type="Node2D" parent="room2"]
+position = Vector2( -573.827, 164.612 )
 
 [node name="Node2D9" type="Node2D" parent="room2"]
 position = Vector2( -93.4028, 120.991 )

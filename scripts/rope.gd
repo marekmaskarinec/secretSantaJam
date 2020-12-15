@@ -73,5 +73,6 @@ func _process(_delta):
 
 	if Input.is_action_just_pressed("cancel"):
 		for i in range(len(connections)):
-			connections[i].connected = false
+			if connections[i] != null:
+				connections[i].connected = false
 		connections = []

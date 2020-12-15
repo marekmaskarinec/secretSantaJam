@@ -112,27 +112,36 @@ text = "Music by DoubleDotDJan"
 align = 1
 autowrap = true
 
-[node name="Label11" type="Label" parent="VBoxContainer"]
+[node name="Label16" type="Label" parent="VBoxContainer"]
 margin_top = 901.0
 margin_right = 1024.0
 margin_bottom = 961.0
+custom_fonts/font = SubResource( 2 )
+text = "Font by rodrigosrtz"
+align = 1
+autowrap = true
+
+[node name="Label11" type="Label" parent="VBoxContainer"]
+margin_top = 965.0
+margin_right = 1024.0
+margin_bottom = 1025.0
 custom_fonts/font = SubResource( 2 )
 align = 1
 autowrap = true
 
 [node name="Label9" type="Label" parent="VBoxContainer"]
-margin_top = 965.0
+margin_top = 1029.0
 margin_right = 1024.0
-margin_bottom = 1088.0
+margin_bottom = 1152.0
 custom_fonts/font = SubResource( 2 )
 text = "Made for the Secret Santa Jam organized by Sheepolution, Kya, and 01010111."
 align = 1
 autowrap = true
 
 [node name="Label12" type="Label" parent="VBoxContainer"]
-margin_top = 1092.0
+margin_top = 1156.0
 margin_right = 1024.0
-margin_bottom = 1287.0
+margin_bottom = 1351.0
 custom_fonts/font = SubResource( 3 )
 text = "
 
@@ -144,16 +153,16 @@ align = 1
 autowrap = true
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
-margin_top = 1291.0
+margin_top = 1355.0
 margin_right = 1024.0
-margin_bottom = 1631.0
+margin_bottom = 1695.0
 texture = ExtResource( 2 )
 stretch_mode = 4
 
 [node name="Label14" type="Label" parent="VBoxContainer"]
-margin_top = 1635.0
+margin_top = 1699.0
 margin_right = 1024.0
-margin_bottom = 1830.0
+margin_bottom = 1894.0
 custom_fonts/font = SubResource( 4 )
 text = "
 
@@ -165,18 +174,18 @@ align = 1
 autowrap = true
 
 [node name="Label13" type="Label" parent="VBoxContainer"]
-margin_top = 1834.0
+margin_top = 1898.0
 margin_right = 1024.0
-margin_bottom = 1894.0
+margin_bottom = 1958.0
 custom_fonts/font = SubResource( 2 )
 text = "More levels coming 1.1. 2021 :]"
 align = 1
 autowrap = true
 
 [node name="Label15" type="Label" parent="VBoxContainer"]
-margin_top = 1898.0
+margin_top = 1962.0
 margin_right = 1024.0
-margin_bottom = 2390.0
+margin_bottom = 2454.0
 custom_fonts/font = SubResource( 4 )
 text = "
 

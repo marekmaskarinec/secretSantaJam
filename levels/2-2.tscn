@@ -57,6 +57,51 @@ script = ExtResource( 4 )
 [node name="Node2D8" type="Node2D" parent="room1"]
 position = Vector2( -491.776, 311.123 )
 
+[node name="Node2D14" type="Node2D" parent="room1"]
+position = Vector2( -570.175, 298.65 )
+
+[node name="Node2D15" type="Node2D" parent="room1"]
+position = Vector2( -566.611, 227.379 )
+
+[node name="Node2D16" type="Node2D" parent="room1"]
+position = Vector2( -463.267, 229.16 )
+
+[node name="Node2D17" type="Node2D" parent="room1"]
+position = Vector2( -703.81, 245.196 )
+
+[node name="Node2D18" type="Node2D" parent="room1"]
+position = Vector2( -721.628, 184.615 )
+
+[node name="Node2D19" type="Node2D" parent="room1"]
+position = Vector2( -595.12, 170.361 )
+
+[node name="Node2D20" type="Node2D" parent="room1"]
+position = Vector2( -418.722, 165.016 )
+
+[node name="Node2D21" type="Node2D" parent="room1"]
+position = Vector2( -236.979, 161.452 )
+
+[node name="Node2D22" type="Node2D" parent="room1"]
+position = Vector2( -317.16, 104.435 )
+
+[node name="Node2D23" type="Node2D" parent="room1"]
+position = Vector2( -917.626, 138.289 )
+
+[node name="Node2D24" type="Node2D" parent="room1"]
+position = Vector2( -830.318, 125.816 )
+
+[node name="Node2D25" type="Node2D" parent="room1"]
+position = Vector2( -912.28, 97.3073 )
+
+[node name="Node2D26" type="Node2D" parent="room1"]
+position = Vector2( -787.554, 65.2349 )
+
+[node name="Node2D27" type="Node2D" parent="room1"]
+position = Vector2( -108.69, 54.5443 )
+
+[node name="Node2D28" type="Node2D" parent="room1"]
+position = Vector2( -99.7805, 113.343 )
+
 [node name="Node2D9" type="Node2D" parent="room1"]
 position = Vector2( -669.776, 301.123 )
 
@@ -84,6 +129,18 @@ script = ExtResource( 4 )
 [node name="Node2D8" type="Node2D" parent="room2"]
 position = Vector2( 290.224, -324.877 )
 
+[node name="Node2D12" type="Node2D" parent="room2"]
+position = Vector2( 240.334, -499.493 )
+
+[node name="Node2D13" type="Node2D" parent="room2"]
+position = Vector2( 220.734, -684.8 )
+
+[node name="Node2D14" type="Node2D" parent="room2"]
+position = Vector2( 222.516, -850.507 )
+
+[node name="Node2D15" type="Node2D" parent="room2"]
+position = Vector2( 206.479, -387.24 )
+
 [node name="Node2D9" type="Node2D" parent="room2"]
 position = Vector2( 304.224, -438.877 )
 
@@ -104,6 +161,30 @@ script = ExtResource( 4 )
 
 [node name="Node2D8" type="Node2D" parent="room3"]
 position = Vector2( -1592.1, -702.854 )
+
+[node name="Node2D14" type="Node2D" parent="room3"]
+position = Vector2( -1511.92, -727.799 )
+
+[node name="Node2D15" type="Node2D" parent="room3"]
+position = Vector2( -1506.57, -620.891 )
+
+[node name="Node2D16" type="Node2D" parent="room3"]
+position = Vector2( -1435.3, -492.602 )
+
+[node name="Node2D17" type="Node2D" parent="room3"]
+position = Vector2( -1392.54, -268.095 )
+
+[node name="Node2D18" type="Node2D" parent="room3"]
+position = Vector2( -1392.54, -130.897 )
+
+[node name="Node2D19" type="Node2D" parent="room3"]
+position = Vector2( -1399.67, -29.3346 )
+
+[node name="Node2D20" type="Node2D" parent="room3"]
+position = Vector2( -1408.58, 65.1007 )
+
+[node name="Node2D21" type="Node2D" parent="room3"]
+position = Vector2( -1481.63, -187.915 )
 
 [node name="Node2D9" type="Node2D" parent="room3"]
 position = Vector2( -1570.54, -547.23 )

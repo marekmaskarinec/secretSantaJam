@@ -63,8 +63,46 @@ position = Vector2( 1129.46, 552.068 )
 [node name="Node2D10" type="Node2D" parent="room1"]
 position = Vector2( 835.379, 617.171 )
 
-[node name="Node2D11" type="Node2D" parent="room1"]
+[node name="Node2D36" type="Node2D" parent="room1"]
 position = Vector2( 835.379, 617.171 )
+
+[node name="Node2D11" type="Node2D" parent="room1"]
+position = Vector2( 976.872, 545.09 )
+
+[node name="Node2D37" type="Node2D" parent="room1"]
+position = Vector2( 982.211, 419.615 )
+
+[node name="Node2D38" type="Node2D" parent="room1"]
+position = Vector2( 984.881, 256.764 )
+rotation = 1.12577
+
+[node name="Node2D39" type="Node2D" parent="room1"]
+position = Vector2( 757.958, 243.416 )
+rotation = 1.12577
+
+[node name="Node2D40" type="Node2D" parent="room1"]
+position = Vector2( 789.995, 35.181 )
+rotation = 1.12577
+
+[node name="Node2D41" type="Node2D" parent="room1"]
+position = Vector2( 1064.97, 83.2353 )
+rotation = 1.12577
+
+[node name="Node2D42" type="Node2D" parent="room1"]
+position = Vector2( 1313.25, 99.2534 )
+rotation = 1.12577
+
+[node name="Node2D43" type="Node2D" parent="room1"]
+position = Vector2( 1091.67, -261.153 )
+rotation = 1.12577
+
+[node name="Node2D44" type="Node2D" parent="room1"]
+position = Vector2( 942.166, -525.452 )
+rotation = 1.12577
+
+[node name="Node2D45" type="Node2D" parent="room1"]
+position = Vector2( 918.139, -664.275 )
+rotation = 1.12577
 
 [node name="Node2D12" type="Node2D" parent="room1"]
 position = Vector2( 1293.34, 318.596 )
@@ -198,6 +236,45 @@ position = Vector2( -181.088, 184.941 )
 
 [node name="Node2D26" type="Node2D" parent="room2"]
 position = Vector2( -114.471, 966.748 )
+
+[node name="Node2D33" type="Node2D" parent="room2"]
+position = Vector2( -79.7652, 1046.84 )
+
+[node name="Node2D34" type="Node2D" parent="room2"]
+position = Vector2( 310.008, 940.051 )
+
+[node name="Node2D35" type="Node2D" parent="room2"]
+position = Vector2( 363.402, 1129.6 )
+
+[node name="Node2D36" type="Node2D" parent="room2"]
+position = Vector2( 478.198, 1233.72 )
+
+[node name="Node2D37" type="Node2D" parent="room2"]
+position = Vector2( 451.501, 937.382 )
+
+[node name="Node2D38" type="Node2D" parent="room2"]
+position = Vector2( 117.791, 926.703 )
+
+[node name="Node2D39" type="Node2D" parent="room2"]
+position = Vector2( -309.358, 1006.79 )
+
+[node name="Node2D40" type="Node2D" parent="room2"]
+position = Vector2( -231.937, 924.033 )
+
+[node name="Node2D41" type="Node2D" parent="room2"]
+position = Vector2( -344.064, 924.033 )
+
+[node name="Node2D42" type="Node2D" parent="room2"]
+position = Vector2( -362.751, 1158.96 )
+
+[node name="Node2D43" type="Node2D" parent="room2"]
+position = Vector2( -370.76, 771.861 )
+
+[node name="Node2D44" type="Node2D" parent="room2"]
+position = Vector2( -189.222, 742.495 )
+
+[node name="Node2D45" type="Node2D" parent="room2"]
+position = Vector2( -304.018, 721.137 )
 
 [node name="door" parent="room2" instance=ExtResource( 5 )]
 position = Vector2( 173.32, 778.763 )

@@ -45,11 +45,8 @@ func _ready():
 func explosion_played():
 	#print("sound finnished")
 	$explosion_sound.queue_free()
-	if not "swarm" in name and not "basic" in name:
-		get_parent().queue_free()
-	else:
-		queue_free()
-	
+	OS.delay_msec(400)
+	get_tree().change_scene_to(load("res://scenes/credits.tscn"))
 
 func die():
 	inst = explosion.instance()
@@ -64,7 +61,6 @@ func die():
 	$explosion.emitting = true
 	$Control.visible = false
 	dead = true
-	get_tree().change_scene_to(load("res://scenes/credits.tscn"))
 	if get_tree().get_root().get_node("arcade") != null and get_parent().name != "swarms":
 		get_tree().get_root().get_node("arcade/room1").score += toGive+1*10
 	else:
@@ -89,7 +85,6 @@ func take_damage(num):
 			die()
 
 func _process(delta):
-	
 	if dead:
 		self.connected = false
 	
@@ -168,10 +163,6 @@ func _process(delta):
 				
 
 func _on_collisionArea_body_entered(body):
-	if "enemy" in body.name:
-		#print("hit: " + body.name + " by: " + name)
-		take_damage(dm)
-		body.take_damage(dm)
 	if "block" in body.name:
 		if body.pull:
 			take_damage(dm*2)
