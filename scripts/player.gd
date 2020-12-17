@@ -127,6 +127,13 @@ func _process(_delta):
 					if get_node("../portal_hider") != null:
 						get_node("../portal_hider").visible = false
 					arcade = true
+		if "exit" in oa[i].name:
+				if not get_node("../exit_panel").visible:
+					get_node("../exit_panel").visible = true
+					$Tween.interpolate_property(get_node("../exit_panel"), "modulate", Color(1,1,1,0), Color(1,1,1,1), 0.8, Tween.TRANS_LINEAR, Tween.EASE_IN)
+					$Tween.start()
+					SPEED = 0
+				#queue_free()
 
 	if get_node("../portal_panel").get_modulate() == Color(0,0,0,1):
 		OS.delay_msec(400)

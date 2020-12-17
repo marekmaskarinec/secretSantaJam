@@ -27,7 +27,7 @@ func _ready():
 			
 	if level == "1-1" and $arcade != null:
 		$arcade.queue_free()
-		$Bartender_dialog/Label.text = "Welcome to insert name. Walk over to the portal and press TAB to enter a level."
+		$Bartender_dialog/Label.text = "Welcome to botsistance. Walk over to the portal and press TAB to enter a level. If you want to leave the game walk into the door on the right."
 			
 func get_blank_map():
 	return {

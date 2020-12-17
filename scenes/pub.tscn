@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://etc/the_pub_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://sprites/arcade-screen1.png" type="Texture" id=11]
 [ext_resource path="res://etc/I-pixel-u.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://scenes/bot.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/exit_panel.gd" type="Script" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.0269, 65.2125 )
@@ -200,8 +201,15 @@ extents = Vector2( 14.2698, 21.2077 )
 [sub_resource type="CircleShape2D" id=39]
 radius = 51.5392
 
+[sub_resource type="DynamicFont" id=42]
+size = 32
+font_data = ExtResource( 12 )
+
 [sub_resource type="CircleShape2D" id=40]
 radius = 56.2274
+
+[sub_resource type="RectangleShape2D" id=41]
+extents = Vector2( 25.4138, 38.3826 )
 
 [node name="pub" type="Node2D"]
 script = ExtResource( 7 )
@@ -258,7 +266,7 @@ scale = Vector2( 0.6, 0.6 )
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 96, 96 )
 format = 1
-tile_data = PoolIntArray( -65536, 22, 0, -65535, 13, 0, -65534, 13, 0, -65533, 13, 0, -65532, 13, 0, -65531, 21, 0, 0, 18, 0, 5, 17, 0, 65541, 17, 0, 131072, 17, 0, 131077, 17, 0, 196608, 0, 0, 196609, 13, 0, 196610, 13, 0, 196611, 13, 0, 196612, 13, 0, 196613, 14, 0 )
+tile_data = PoolIntArray( -65536, 22, 0, -65535, 13, 0, -65534, 13, 0, -65533, 13, 0, -65532, 13, 0, -65531, 21, 0, 0, 18, 0, 5, 17, 0, 65541, 18, 0, 131072, 17, 0, 196608, 0, 0, 196609, 13, 0, 196610, 13, 0, 196611, 13, 0, 196612, 13, 0, 196613, 14, 0 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 217.071, 53.3389 )
@@ -364,7 +372,7 @@ show_behind_parent = true
 position = Vector2( -0.11644, 11.8608 )
 scale = Vector2( 1.06, 1.06 )
 frames = SubResource( 37 )
-frame = 4
+frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="arcade"]
@@ -389,9 +397,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="exit_panel" type="Panel" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -1825.06
+margin_top = -1214.65
+margin_right = 2435.94
+margin_bottom = 1802.35
+custom_styles/panel = SubResource( 5 )
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="exit_panel"]
+margin_left = 2033.28
+margin_top = 1332.87
+margin_right = 2305.28
+margin_bottom = 1372.87
+custom_fonts/font = SubResource( 42 )
+text = "See you next time"
+
 [node name="shopArea" type="Area2D" parent="."]
 position = Vector2( 218.745, 38.4737 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="shopArea"]
 position = Vector2( 12.2704, -6.37115 )
 shape = SubResource( 40 )
+
+[node name="exitArea" type="Area2D" parent="."]
+position = Vector2( 354.038, 138.591 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="exitArea"]
+shape = SubResource( 41 )
