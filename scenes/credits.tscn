@@ -132,16 +132,16 @@ autowrap = true
 [node name="Label9" type="Label" parent="VBoxContainer"]
 margin_top = 1029.0
 margin_right = 1024.0
-margin_bottom = 1152.0
+margin_bottom = 1215.0
 custom_fonts/font = SubResource( 2 )
-text = "Made for the Secret Santa Jam organized by Sheepolution, Kya, and 01010111."
+text = "This game was made for AggressivePie as part of Secret Santa Jam organized by Sheepolution, Kya, and 01010111."
 align = 1
 autowrap = true
 
 [node name="Label12" type="Label" parent="VBoxContainer"]
-margin_top = 1156.0
+margin_top = 1219.0
 margin_right = 1024.0
-margin_bottom = 1351.0
+margin_bottom = 1414.0
 custom_fonts/font = SubResource( 3 )
 text = "
 
@@ -153,16 +153,16 @@ align = 1
 autowrap = true
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
-margin_top = 1355.0
+margin_top = 1418.0
 margin_right = 1024.0
-margin_bottom = 1695.0
+margin_bottom = 1758.0
 texture = ExtResource( 2 )
 stretch_mode = 4
 
 [node name="Label14" type="Label" parent="VBoxContainer"]
-margin_top = 1699.0
+margin_top = 1762.0
 margin_right = 1024.0
-margin_bottom = 1894.0
+margin_bottom = 1957.0
 custom_fonts/font = SubResource( 4 )
 text = "
 
@@ -174,18 +174,18 @@ align = 1
 autowrap = true
 
 [node name="Label13" type="Label" parent="VBoxContainer"]
-margin_top = 1898.0
+margin_top = 1961.0
 margin_right = 1024.0
-margin_bottom = 1958.0
+margin_bottom = 2021.0
 custom_fonts/font = SubResource( 2 )
-text = "More levels coming 1.1. 2021 :]"
+text = "More levels maybe coming 1.1. 2021 :]"
 align = 1
 autowrap = true
 
 [node name="Label15" type="Label" parent="VBoxContainer"]
-margin_top = 1962.0
+margin_top = 2025.0
 margin_right = 1024.0
-margin_bottom = 2454.0
+margin_bottom = 2517.0
 custom_fonts/font = SubResource( 4 )
 text = "
 

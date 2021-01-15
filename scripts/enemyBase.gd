@@ -28,10 +28,11 @@ func swarm_attack():
 	self.move_and_slide(global_position.direction_to(player.global_position)*5)
 	can_attack = false
 	player.take_damage(dm)
-	#self.take_damage(dm)
 	stretch = true
 
 func _ready():
+	
+	# setting up level>5 textures
 	if get_tree().get_root().get_node("level/2") != null or get_tree().get_root().get_node("arcade/2") != null:
 		var sprite_map = {
 			"enemy_spawner": "res://sprites/spawner2.png",
@@ -95,11 +96,9 @@ func _ready():
 		lastShot = OS.get_datetime()["second"]
 		toGive = 0
 	get_node("Control/ProgressBar").max_value = hp
-	#randomize()
 	explosion = load("res://scenes/explosion.tscn")
 
 func explosion_played():
-	#print("sound finnished")
 	$explosion_sound.queue_free()
 	if not "swarm" in name and not "basic" in name:
 		get_parent().queue_free()
@@ -114,7 +113,6 @@ func die():
 	$explosion_sound.autoplay = false
 	if self in get_tree().get_nodes_in_group("rope")[0].connections:
 		get_tree().get_nodes_in_group("rope")[0].connections.remove(get_tree().get_nodes_in_group("rope")[0].connections.find_last(self))
-	#self.queue_free()
 	$outline.visible = false
 	$icon.visible = false
 	$explosion.emitting = true
@@ -133,7 +131,6 @@ func take_damage(num):
 		pull = false
 		connected = false
 		get_tree().get_nodes_in_group("rope")[0].clear()
-		#get_node("collider").disabled = true
 	if num < hp:
 		$AnimationPlayer.play("scenestakeDmg")
 		hp -= num
@@ -144,15 +141,8 @@ func take_damage(num):
 			die()
 
 func _process(delta):
-	
 	if dead:
 		self.connected = false
-	
-	#if dead and not $explosion.emitting:
-	#	if not "swarm" in name and not "basic" in name:
-	#		get_parent().queue_free()
-	#	else:
-	#		queue_free()
 	
 	var ob = get_node("Area2D").get_overlapping_bodies()
 	for i in range(len(ob)):
@@ -163,9 +153,7 @@ func _process(delta):
 	
 	
 	if path.size() > 0:
-
 		position -= offset
-
 	
 	while distance_to_walk > 0 and path.size() > 0 and not dead:
 		var distance_to_next_point = global_position.distance_to(path[0])
@@ -176,8 +164,6 @@ func _process(delta):
 			path.remove(0)
 		distance_to_walk -= distance_to_next_point
 	if path.size() > 0:
-	#	position -= offset
-	#	offset = Vector2(randi()%20, randi()%20)
 		position += offset
 
 	if pull:
@@ -199,6 +185,7 @@ func _process(delta):
 			if collision != null:
 				take_damage(1)
 				move_and_slide(global_position.direction_to(collision.collider.global_position))
+
 		else:
 			get_node("collider").disabled = true
 			move_and_slide(Vector2(0, 0))
@@ -208,11 +195,7 @@ func _process(delta):
 		get_node("outline").visible = true
 	else:
 		get_node("outline").visible = false
-		
-	#if get_node("bullets").get_child_count() < 1 and path != null:
-	#	inst = load(bulletMap[randi()%len(bulletMap)]).instance()
-	#	inst.speed = self.global_position.direction_to(get_tree().get_nodes_in_group("player")[0].global_position)
-	#	get_node("bullets").add_child(inst)
+	
 	lastPos = position
 
 	if "spawner" in name:
@@ -226,7 +209,6 @@ func _process(delta):
 		for i in range(len($collisionArea.get_overlapping_areas())):
 			if "hitbox" in oa[i].name and can_attack:
 				swarm_attack()
-				#print("attack")
 			else:
 				can_attack = true
 				
@@ -238,14 +220,13 @@ func _process(delta):
 					inst = load("res://scenes/bullet.tscn").instance()
 					playerPos = global_position.direction_to(get_tree().get_nodes_in_group("player")[0].global_position)
 					if playerPos.x < playerPos.y:
-						inst.position = position#+Vector2(playerPos.x/playerPos.y, 1)
+						inst.position = position
 					else:
-						inst.position = position#+Vector2(1, playerPos.y/playerPos.y)
+						inst.position = position
 					get_parent().get_node("bullets").add_child(inst)
 
 func _on_collisionArea_body_entered(body):
 	if "enemy" in body.name:
-		#print("hit: " + body.name + " by: " + name)
 		take_damage(dm)
 		body.take_damage(dm)
 	if "block" in body.name:
@@ -258,13 +239,10 @@ func _on_collisionArea_body_entered(body):
 			body.stretch = true
 			body.pull = false
 	if "shield" in body.name:
-		if true:#body.energy >= dm:
+		if true:
 			body.energy -= dm
 			move_and_slide(-global_position.direction_to(body.global_position))
 			take_damage(dm)
-
-
-
 
 func _on_Button_pressed():
 	if path.size() > 0:
@@ -272,3 +250,14 @@ func _on_Button_pressed():
 		self.connected = true
 		get_tree().get_nodes_in_group("rope")[0].add_connection(self)
 	
+func _on_Button_mouse_entered():
+	if path.size() > 0:
+		$outline.visible = true
+		self.connected = true
+		get_tree().get_nodes_in_group("rope")[0].add_connection(self)
+
+func _on_Button_mouse_exited():
+	if not stretch and not pull:
+		$outline.visible = false
+		self.connected = false
+		get_tree().get_nodes_in_group("rope")[0].clear()

@@ -17,6 +17,9 @@ func load_settings():
 	if dat != null:
 		volume = dat["vol"]
 		fullscreen = dat["fullscreen"]
+	else:
+		volume = -10
+		fullscreen = false
 
 func save():
 	var save_game = File.new()

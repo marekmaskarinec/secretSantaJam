@@ -106,4 +106,6 @@ __meta__ = {
 stream = ExtResource( 8 )
 autoplay = true
 [connection signal="body_entered" from="shooter/collisionArea" to="shooter" method="_on_collisionArea_body_entered"]
+[connection signal="mouse_entered" from="shooter/Button" to="shooter" method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="shooter/Button" to="shooter" method="_on_Button_mouse_exited"]
 [connection signal="pressed" from="shooter/Button" to="shooter" method="_on_Button_pressed"]

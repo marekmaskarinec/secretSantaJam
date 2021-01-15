@@ -15,10 +15,13 @@ _global_script_class_icons={
 
 [application]
 
-config/name="connecter"
+config/name="botsistance"
+config/description="A game made for AggressivePie."
 run/main_scene="res://scenes/pub.tscn"
-boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
-config/icon="res://icon.png"
+boot_splash/image="res://sprites/my_logo.png"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0.0313726, 0.0313726, 0.0313726, 1 )
+config/icon="res://sprites/logo.png"
 
 [autoload]
 

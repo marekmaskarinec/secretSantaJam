@@ -122,4 +122,6 @@ __meta__ = {
 stream = ExtResource( 8 )
 autoplay = true
 [connection signal="body_entered" from="spawner/collisionArea" to="spawner" method="_on_collisionArea_body_entered"]
+[connection signal="mouse_entered" from="spawner/Button" to="spawner" method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="spawner/Button" to="spawner" method="_on_Button_mouse_exited"]
 [connection signal="pressed" from="spawner/Button" to="spawner" method="_on_Button_pressed"]

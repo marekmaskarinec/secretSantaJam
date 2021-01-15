@@ -54,9 +54,8 @@ flat = true
 
 [node name="settingsUI" parent="." instance=ExtResource( 3 )]
 visible = false
-margin_left = 0.857208
 margin_top = 163.128
-margin_right = 0.857208
 margin_bottom = 163.128
+rect_scale = Vector2( 0.7, 0.7 )
 [connection signal="pressed" from="VBoxContainer/settingsButton" to="." method="_on_settingsButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/quitButton" to="." method="_on_quitButton_pressed"]

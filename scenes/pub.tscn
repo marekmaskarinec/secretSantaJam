@@ -201,14 +201,14 @@ extents = Vector2( 14.2698, 21.2077 )
 [sub_resource type="CircleShape2D" id=39]
 radius = 51.5392
 
-[sub_resource type="DynamicFont" id=42]
+[sub_resource type="DynamicFont" id=40]
 size = 32
 font_data = ExtResource( 12 )
 
-[sub_resource type="CircleShape2D" id=40]
+[sub_resource type="CircleShape2D" id=41]
 radius = 56.2274
 
-[sub_resource type="RectangleShape2D" id=41]
+[sub_resource type="RectangleShape2D" id=42]
 extents = Vector2( 25.4138, 38.3826 )
 
 [node name="pub" type="Node2D"]
@@ -338,9 +338,24 @@ __meta__ = {
 [node name="Label" type="Label" parent="Bartender_dialog"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 105.0
 grow_vertical = 0
 custom_fonts/font = SubResource( 4 )
 align = 3
+valign = 2
+autowrap = true
+
+[node name="Label2" type="Label" parent="Bartender_dialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 104.271
+margin_top = 302.723
+margin_right = 104.271
+margin_bottom = 302.723
+grow_vertical = 0
+custom_fonts/font = SubResource( 4 )
+text = "v0.2"
+align = 2
 valign = 2
 autowrap = true
 
@@ -372,7 +387,7 @@ show_behind_parent = true
 position = Vector2( -0.11644, 11.8608 )
 scale = Vector2( 1.06, 1.06 )
 frames = SubResource( 37 )
-frame = 5
+frame = 17
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="arcade"]
@@ -415,7 +430,7 @@ margin_left = 2033.28
 margin_top = 1332.87
 margin_right = 2305.28
 margin_bottom = 1372.87
-custom_fonts/font = SubResource( 42 )
+custom_fonts/font = SubResource( 40 )
 text = "See you next time"
 
 [node name="shopArea" type="Area2D" parent="."]
@@ -423,10 +438,10 @@ position = Vector2( 218.745, 38.4737 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="shopArea"]
 position = Vector2( 12.2704, -6.37115 )
-shape = SubResource( 40 )
+shape = SubResource( 41 )
 
 [node name="exitArea" type="Area2D" parent="."]
 position = Vector2( 354.038, 138.591 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="exitArea"]
-shape = SubResource( 41 )
+shape = SubResource( 42 )

@@ -4,7 +4,7 @@ func _ready():
 	update()
 
 func update():
-	$VBoxContainer/CenterContainer/HBoxContainer/Label.text = "VOLUME: " + str((Settings.volume+25)*2)
+	$VBoxContainer/CenterContainer/HBoxContainer/Label.text = "VOLUME: " + str((Settings.volume+50)*2)
 	var tmp = {
 		true: "ON",
 		false: "OFF",
@@ -13,12 +13,12 @@ func update():
 
 
 func _on_minus_pressed():
-	if Settings.volume >= -20:
+	if Settings.volume >= -50:
 		Settings.set_volume(Settings.volume-5)
 		update()
 
 func _on_plus_pressed():
-	if Settings.volume <= 20:
+	if Settings.volume <= 0:
 		Settings.set_volume(Settings.volume+5)
 		update()
 		

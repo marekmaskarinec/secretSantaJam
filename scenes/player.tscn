@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/character.png" type="Texture" id=2]
@@ -94,11 +94,27 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 6 ), Vector2( 0, 4.4 ), Vector2( 0, 6 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="Animation" id=9]
+resource_name = "screenshake"
+length = 0.34
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.34 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 22.981, 26.5165 ), Vector2( 30.052, -31.8198 ), Vector2( -26.5166, 22.981 ), Vector2( -15.91, -3.53553 ), Vector2( -8.83888, -61.8719 ), Vector2( -83.6743, -7.66032 ), Vector2( 66.5859, 70.1214 ), Vector2( -27.1058, -7.66032 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=10]
 radius = 57.5543
 
-[sub_resource type="Animation" id=10]
-resource_name = "damage"
+[sub_resource type="Animation" id=11]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:modulate")
@@ -113,7 +129,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.745098, 0.188235, 0.188235, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=12]
 bg_color = Color( 0, 0, 0, 1 )
 
 [node name="player" type="KinematicBody2D" groups=[
@@ -144,7 +160,6 @@ rect_scale = Vector2( 3, 3 )
 visible = false
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -0.032958 )
 frames = SubResource( 6 )
 animation = "down"
 playing = true
@@ -152,7 +167,7 @@ playing = true
 [node name="CPUParticles2D" parent="AnimatedSprite" instance=ExtResource( 6 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 5.96704 )
+position = Vector2( 0, 6 )
 shape = SubResource( 7 )
 
 [node name="heal_particles" parent="." instance=ExtResource( 7 )]
@@ -161,14 +176,15 @@ scale = Vector2( 3, 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/main = SubResource( 8 )
+anims/screenshake = SubResource( 9 )
 
 [node name="hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-anims/damage = SubResource( 10 )
+anims/damage = SubResource( 11 )
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -178,7 +194,7 @@ margin_left = -2000.0
 margin_top = -2000.0
 margin_right = 2000.0
 margin_bottom = 2000.0
-custom_styles/panel = SubResource( 11 )
+custom_styles/panel = SubResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

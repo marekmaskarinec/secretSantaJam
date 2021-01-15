@@ -6,29 +6,20 @@ var start = true
 
 func _ready():
 	if start:
-		#print("start")
-		#print(get_parent())
 		load_game()
 	else:
-		#load_game()
-		#print("alredy been in pub")
-		#print(level)
 		level = levels[levels.bsearch(level)+1]
-		#print(levels.bsearch(level)+1)
-		#print(level)
 		save()
-		#print(get_tree().get_nodes_in_group("player")[0].stones)
 
-		#load_game()
-
-		
 		if level == "1-2":
 			$Bartender_dialog/Label.text = "An arcade machine has been added. You can use it to train for upcoming battles"
-			
+		if level == "1-3":
+			$Bartender_dialog/Label.text = "Following levels are going to get tougher. You can buy upgrades at the bar."
+
 	if level == "1-1" and $arcade != null:
 		$arcade.queue_free()
 		$Bartender_dialog/Label.text = "Welcome to botsistance. Walk over to the portal and press TAB to enter a level. If you want to leave the game walk into the door on the right."
-			
+
 func get_blank_map():
 	return {
 		"player_name": "player",
@@ -68,5 +59,3 @@ func load_game():
 			get_tree().get_nodes_in_group("player")[0].stones = data["stones"]
 			get_tree().get_nodes_in_group("player")[0].hp = data["max_hp"]
 			get_tree().get_nodes_in_group("player")[0].SPEED = data["speed"]
-
-
